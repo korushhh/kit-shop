@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
+    // Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    menuToggle.addEventListener('click', () => {
+        nav.classList.toggle('active');
+        menuToggle.textContent = nav.classList.contains('active') ? '×' : '☰';
+    });
+
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -26,21 +34,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCount = document.getElementById('cart-count');
 
     function updateCart() {
-        cartItems.innerHTML = '';
-        let total = 0;
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            itemElement.innerHTML = `
-                <p>${item.title} (${item.size}, ${item.sleeve === 'long' ? 'آستین‌دار' : 'بدون آستین'})</p>
-                <p>${item.price.toLocaleString()} تومان</p>
-            `;
-            cartItems.appendChild(itemElement);
-            total += item.price;
-        });
-        cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
-        cartCount.textContent = cart.length;
-        localStorage.setItem('cart', JSON.stringify(cart));
+        try {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <p>${item.title} (${item.size}, ${item.sleeve === 'long' ? 'آستین‌دار' : 'بدون آستین'})</p>
+                    <p>${item.price.toLocaleString()} تومان</p>
+                `;
+                cartItems.appendChild(itemElement);
+                total += item.price;
+            });
+            cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
+            cartCount.textContent = cart.length;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Cart updated:', cart);
+        } catch (error) {
+            console.error('خطا در آپدیت سبد خرید:', error);
+        }
     }
 
     cartBtn.addEventListener('click', () => {
@@ -102,13 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
 
     products.forEach(product => observer.observe(product));
-});
 
-// Expose addToCart for product.js
-function addToCart(title, size, sleeve, price) {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push({ title, size, sleeve, price });
-    localStorage.setItem('cart', JSON.stringify(cart));
-    document.getElementById('cart-count').textContent = cart.length;
-    alert('محصول به سبد خرید اضافه شد!');
-}
+    // Expose addToCart
+    window.addToCart = function(title, size, sleeve, price) {
+        try {
+            console.log('addToCart called with:', { title, size, sleeve, price });
+            cart.push({ title, size, sleeve, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            cartCount.textContent = cart.length;
+            alert('محصول به سبد خرید اضافه شد!');
+        } catch (error) {
+            console.error('خطا در اضافه کردن به سبد خرید:', error);
+            alert('خطا: نمی‌توان محصول را به سبد خرید اضافه کرد.');
+        }
+    };
+});
