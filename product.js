@@ -38,7 +38,7 @@ const kits = {
     'chelsea': {
         title: 'کیت چلسی',
         description: 'لباس اصلی فصل 2024-2025، جنس: پلی‌استر، برند: نایک',
-        img: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jfif',
+        img: 'https://github.com/korushhh/kit-shop/blob/main/images/chelsea.jpg',
         originalPriceLong: '900,000 تومان',
         discountedPriceLong: '765,000 تومان',
         originalPriceShort: '850,000 تومان',
