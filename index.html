@@ -22,9 +22,9 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <h1>کیت‌های هواداری تیم‌های محبوب</h1>
-        <p>با کیت‌های ما، عشقت به تیم محبوبت رو نشون بده!</p>
-        <a href="#shop" class="btn">مشاهده کیت‌ها</a>
+        <h1>عشقت به تیم محبوبت رو نشون بده!</h1>
+        <p>کیت‌های هواداری با کیفیت بالا و تخفیف ویژه</p>
+        <a href="#shop" class="btn">خرید کن، هوادار!</a>
     </section>
 
     <!-- Shop Section -->
@@ -32,25 +32,64 @@
         <h2>کیت‌های هواداری</h2>
         <div class="products">
             <div class="product">
-                <img src="https://via.placeholder.com/300x200?text=پرسپولیس" alt="کیت پرسپولیس">
-                <h3>کیت پرسپولیس</h3>
-                <p>لباس اصلی فصل 1404-1405</p>
-                <p class="price">350,000 تومان</p>
-                <button onclick="addToCart('کیت پرسپولیس')">افزودن به سبد</button>
+                <img src="https://imgur.com/DmUIdSS" alt="کیت بارسلونا">
+                <h3>کیت بارسلونا</h3>
+                <p>لباس اصلی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-barca" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-barca" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <button onclick="addToCart('کیت بارسلونا', this)">افزودن به سبد</button>
             </div>
             <div class="product">
-                <img src="https://via.placeholder.com/300x200?text=استقلال" alt="کیت استقلال">
+                <img src="https://imgur.com/xVv3ck3" alt="کیت رئال مادرید">
+                <h3>کیت رئال مادرید</h3>
+                <p>لباس خانگی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-real" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-real" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <button onclick="addToCart('کیت رئال مادرید', this)">افزودن به سبد</button>
+            </div>
+            <div class="product">
+                <img src="https://imgur.com/fQoV9QY" alt="کیت استقلال">
                 <h3>کیت استقلال</h3>
                 <p>لباس خانگی فصل 1404-1405</p>
-                <p class="price">350,000 تومان</p>
-                <button onclick="addToCart('کیت استقلال')">افزودن به سبد</button>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-esteghlal" value="long" checked> آستین‌دار (800,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-esteghlal" value="short"> بدون آستین (750,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">800,000 تومان</span>
+                    <span class="discounted-price">680,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <button onclick="addToCart('کیت استقلال', this)">افزودن به سبد</button>
             </div>
             <div class="product">
-                <img src="https://via.placeholder.com/300x200?text=منچستر+یونایتد" alt="کیت منچستر یونایتد">
-                <h3>کیت منچستر یونایتد</h3>
-                <p>لباس اصلی فصل 2024-2025</p>
-                <p class="price">450,000 تومان</p>
-                <button onclick="addToCart('کیت منچستر یونایتد')">افزودن به سبد</button>
+                <img src="https://imgur.com/mzJkl7n" alt="کیت پرسپولیس">
+                <h3>کیت پرسپولیس</h3>
+                <p>لباس اصلی فصل 1404-1405</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-perspolis" value="long" checked> آستین‌دار (800,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-perspolis" value="short"> بدون آستین (750,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">800,000 تومان</span>
+                    <span class="discounted-price">680,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <button onclick="addToCart('کیت پرسپولیس', this)">افزودن به سبد</button>
             </div>
         </div>
     </section>
@@ -58,11 +97,11 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>تماس با ما</h2>
-        <p>برای سفارش یا سؤال، با ما در ارتباط باشید!</p>
-        <form>
+        <p>سؤال یا سفارشی داری؟ پیام بده!</p>
+        <form id="contact-form">
             <input type="text" placeholder="نام" required>
             <input type="email" placeholder="ایمیل" required>
-            <textarea placeholder="پیام شما (مثلاً: کیت پرسپولیس سایز L)" required></textarea>
+            <textarea placeholder="پیام شما (مثلاً: کیت پرسپولیس آستین‌دار سایز L)" required></textarea>
             <button type="submit">ارسال</button>
         </form>
     </section>
