@@ -1,9 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('صفحه لود شد، شروع اسکریپت...');
+
     // Header Scroll Effect
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+    if (header) {
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+    } else {
+        console.error('هدر پیدا نشد!');
+    }
 
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
@@ -13,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('پیام شما با موفقیت ارسال شد!');
             contactForm.reset();
         });
+    } else {
+        console.warn('فرم تماس پیدا نشد!');
     }
 
     // Cart Functionality
@@ -27,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCart() {
         try {
-            console.log('Updating cart:', cart);
+            console.log('آپدیت سبد خرید:', cart);
             cartItems.innerHTML = '';
             let total = 0;
             cart.forEach(item => {
@@ -49,32 +57,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    cartBtn.addEventListener('click', () => {
-        cartModal.style.display = 'flex';
-        updateCart();
-    });
+    if (cartBtn && cartModal && closeCart && clearCartBtn) {
+        cartBtn.addEventListener('click', () => {
+            cartModal.style.display = 'flex';
+            updateCart();
+        });
 
-    closeCart.addEventListener('click', () => {
-        cartModal.style.display = 'none';
-    });
-
-    clearCartBtn.addEventListener('click', () => {
-        cart = [];
-        updateCart();
-    });
-
-    window.addEventListener('click', (e) => {
-        if (e.target === cartModal) {
+        closeCart.addEventListener('click', () => {
             cartModal.style.display = 'none';
-        }
-    });
+        });
+
+        clearCartBtn.addEventListener('click', () => {
+            cart = [];
+            updateCart();
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+        });
+    } else {
+        console.error('المان‌های سبد خرید پیدا نشدند!');
+    }
+
+    // Initialize cart count
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    } else {
+        console.error('المان cart-count پیدا نشد!');
+    }
 
     // Filter Functionality
     const filterButtons = document.querySelectorAll('.filter-btn');
     const products = document.querySelectorAll('.product');
 
+    console.log('تعداد محصولات پیدا شده:', products.length);
+    if (products.length === 0) {
+        console.error('هیچ محصولی پیدا نشد! چک کنید که کلاس .product درست استفاده شده باشه.');
+    }
+
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
+            console.log('فیلتر کلیک شد:', button.getAttribute('data-filter'));
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
 
@@ -89,8 +114,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     product.style.display = 'flex';
                 } else if (filter === 'iranian' && category === 'iranian') {
                     product.style.display = 'flex';
-                } else if (filter === 'cheapest') {
-                    product.style.display = price <= 680000 ? 'flex' : 'none';
+                } else if (filter === 'cheapest' && price <= 680000) {
+                    product.style.display = 'flex';
                 } else {
                     product.style.display = 'none';
                 }
@@ -102,17 +127,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+                console.log('محصول در دید:', entry.target);
                 entry.target.classList.add('visible');
             }
         });
     }, { threshold: 0.2 });
 
-    products.forEach(product => observer.observe(product));
+    products.forEach(product => {
+        observer.observe(product);
+        product.style.display = 'flex'; // مطمئن می‌شیم محصولات از اول نمایش داده می‌شن
+    });
 
-    // Expose addToCart
-    window.addToCart = function(title, size, sleeve, price) {
+    // Expose addToCartGlobal
+    window.addToCartGlobal = function(title, size, sleeve, price) {
         try {
-            console.log('addToCart called with:', { title, size, sleeve, price });
+            console.log('addToCartGlobal called with:', { title, size, sleeve, price });
             cart.push({ title, size, sleeve, price });
             localStorage.setItem('cart', JSON.stringify(cart));
             cartCount.textContent = cart.length;
@@ -123,7 +152,4 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('خطا: نمی‌توان محصول را به سبد خرید اضافه کرد!');
         }
     };
-
-    // Initialize cart count
-    cartCount.textContent = cart.length;
 });
