@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazir', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #121212;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+}
+
+header.scrolled {
+    background: linear-gradient(90deg, #1a237e, #3f51b5);
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #ffca28;
+    bottom: -6px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ffca28;
+}
+
+/* Product Section */
+.product-detail {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #1a237e, #263238);
+    text-align: center;
+}
+
+.product-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.1);
+}
+
+.product-info {
+    text-align: right;
+    color: #121212;
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #d32f2f;
+}
+
+.product-info p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+}
+
+.size-options, .sleeve-options {
+    margin: 1.5rem 0;
+}
+
+.size-options h3, .sleeve-options h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.size-options label, .sleeve-options label {
+    font-size: 1.1rem;
+    color: #555;
+    margin-left: 1.5rem;
+    cursor: pointer;
+}
+
+.size-options input, .sleeve-options input {
+    margin-left: 0.5rem;
+}
+
+.price {
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.2rem;
+}
+
+.discounted-price {
+    color: #d32f2f;
+    font-weight: 700;
+    font-size: 1.4rem;
+}
+
+.stock {
+    color: #4caf50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-info button {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    color: #fff;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-info button:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #1a237e, #263238);
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .product-container {
+        flex-direction: column;
+        padding: 1.5rem;
+    }
+
+    .product-image img {
+        max-width: 100%;
+        height: 250px;
+    }
+
+    .product-info h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-detail {
+        padding: 3rem 1rem;
+    }
+
+    .product-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .product-info button {
+        padding: 0.8rem 2rem;
+    }
+}

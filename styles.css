@@ -171,7 +171,7 @@ nav ul li a:hover {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     position: relative;
     overflow: hidden;
-    min-height: 450px; /* Ensure all cards have same height */
+    min-height: 450px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -259,7 +259,7 @@ nav ul li a:hover {
     font-size: 0.9rem;
 }
 
-.product button {
+.product-btn {
     background: linear-gradient(90deg, #d32f2f, #b71c1c);
     color: #fff;
     border: none;
@@ -270,9 +270,12 @@ nav ul li a:hover {
     text-transform: uppercase;
     box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
-.product button:hover {
+.product-btn:hover {
     transform: scale(1.12);
     box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
 }

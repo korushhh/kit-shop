@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فروشگاه کیت هواداری کوروش - محصول</title>
+    <link rel="stylesheet" href="product.css">
+    <link href="https://v1.fontapi.ir/css/Vazir" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">کیت هواداری کوروش</div>
+        <nav>
+            <ul>
+                <li><a href="index.html#home">خانه</a></li>
+                <li><a href="index.html#shop">کیت‌ها</a></li>
+                <li><a href="index.html#contact">تماس</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product Section -->
+    <section class="product-detail">
+        <div class="product-container">
+            <div class="product-image">
+                <img id="product-img" src="" alt="کیت">
+            </div>
+            <div class="product-info">
+                <h1 id="product-title"></h1>
+                <p id="product-description"></p>
+                <div class="size-options">
+                    <h3>سایز:</h3>
+                    <label><input type="radio" name="size" value="S" checked> S</label>
+                    <label><input type="radio" name="size" value="M"> M</label>
+                    <label><input type="radio" name="size" value="L"> L</label>
+                    <label><input type="radio" name="size" value="XL"> XL</label>
+                </div>
+                <div class="sleeve-options">
+                    <h3>نوع آستین:</h3>
+                    <label><input type="radio" name="sleeve" value="long" checked> آستین‌دار</label>
+                    <label><input type="radio" name="sleeve" value="short"> بدون آستین</label>
+                </div>
+                <p class="price">
+                    <span id="original-price"></span>
+                    <span id="discounted-price"></span>
+                </p>
+                <p class="stock">موجود</p>
+                <button onclick="addToCart()">افزودن به سبد خرید</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>طراحی‌شده توسط کوروش نعیمی</p>
+        <p>تمامی حقوق محفوظ است © 1404</p>
+        <p>ایمیل: your.email@example.com | واتساپ: 0912-xxx-xxxx</p>
+    </footer>
+
+    <script src="product.js"></script>
+</body>
+</html>
