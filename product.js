@@ -1,108 +1,145 @@
-const kits = {
-    'barca': {
-        title: 'کیت بارسلونا',
-        description: 'لباس اصلی فصل 2024-2025، جنس: پلی‌استر، برند: نایک',
-        img: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/barca.jpg',
-        originalPriceLong: '900,000 تومان',
-        discountedPriceLong: '765,000 تومان',
-        originalPriceShort: '850,000 تومان',
-        discountedPriceShort: '722,500 تومان'
-    },
-    'real': {
-        title: 'کیت رئال مادرید',
-        description: 'لباس خانگی فصل 2024-2025، جنس: پلی‌استر، برند: آدیداس',
-        img: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/real.jpg',
-        originalPriceLong: '900,000 تومان',
-        discountedPriceLong: '765,000 تومان',
-        originalPriceShort: '850,000 تومان',
-        discountedPriceShort: '722,500 تومان'
-    },
-    'esteghlal': {
-        title: 'کیت استقلال',
-        description: 'لباس خانگی فصل 1404-1405، جنس: پلی‌استر، برند: مجید',
-        img: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/es.jpeg',
-        originalPriceLong: '800,000 تومان',
-        discountedPriceLong: '680,000 تومان',
-        originalPriceShort: '750,000 تومان',
-        discountedPriceShort: '637,500 تومان'
-    },
-    'perspolis': {
-        title: 'کیت پرسپولیس',
-        description: 'لباس اصلی فصل 1404-1405، جنس: پلی‌استر، برند: آل‌اشپرت',
-        img: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpg',
-        originalPriceLong: '800,000 تومان',
-        discountedPriceLong: '680,000 تومان',
-        originalPriceShort: '750,000 تومان',
-        discountedPriceShort: '637,500 تومان'
-    },
-    'chelsea': {
-        title: 'کیت چلسی',
-        description: 'لباس اصلی فصل 2024-2025، جنس: پلی‌استر، برند: نایک',
-        img: 'https://github.com/korushhh/kit-shop/blob/main/images/chelsea.jpg',
-        originalPriceLong: '900,000 تومان',
-        discountedPriceLong: '765,000 تومان',
-        originalPriceShort: '850,000 تومان',
-        discountedPriceShort: '722,500 تومان'
-    },
-    'man-utd': {
-        title: 'کیت منچستر یونایتد',
-        description: 'لباس خانگی فصل 2024-2025، جنس: پلی‌استر، برند: آدیداس',
-        img: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/MUN.jpg',
-        originalPriceLong: '900,000 تومان',
-        discountedPriceLong: '765,000 تومان',
-        originalPriceShort: '850,000 تومان',
-        discountedPriceShort: '722,500 تومان'
-    }
-};
-
 document.addEventListener('DOMContentLoaded', () => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const kitId = urlParams.get('kit');
-    const kit = kits[kitId];
-
-    const productImg = document.getElementById('product-img');
-    const productTitle = document.getElementById('product-title');
-    const productDescription = document.getElementById('product-description');
-
-    if (kit) {
-        productImg.src = kit.img;
-        productImg.alt = kit.title;
-        productTitle.textContent = kit.title;
-        productDescription.textContent = kit.description;
-        updatePrice();
-        // چک کردن لود شدن تصویر
-        productImg.onerror = () => {
-            productImg.src = 'https://via.placeholder.com/400x300?text=تصویر+یافت+نشد';
-            productImg.alt = 'تصویر در دسترس نیست';
-        };
-    } else {
-        document.querySelector('.product-container').innerHTML = '<p>کیت یافت نشد! لطفاً از صفحه اصلی یک کیت انتخاب کنید.</p>';
-    }
-
-    document.querySelectorAll('input[name="sleeve"]').forEach(input => {
-        input.addEventListener('change', updatePrice);
+    // Header Scroll Effect
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
     });
-});
 
-function updatePrice() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const kitId = urlParams.get('kit');
-    const kit = kits[kitId];
-    const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
+    // Cart Functionality
+    const cartModal = document.getElementById('cart-modal');
+    const cartBtn = document.getElementById('cart-btn');
+    const closeCart = document.getElementById('close-cart');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const clearCartBtn = document.getElementById('clear-cart');
 
-    if (kit) {
-        document.getElementById('original-price').textContent = sleeve === 'long' ? kit.originalPriceLong : kit.originalPriceShort;
-        document.getElementById('discounted-price').textContent = sleeve === 'long' ? kit.discountedPriceLong : kit.discountedPriceShort;
+    function updateCart() {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cartItems.innerHTML = '';
+        let total = 0;
+        cart.forEach(item => {
+            const itemElement = document.createElement('div');
+            itemElement.classList.add('cart-item');
+            itemElement.innerHTML = `
+                <p>${item.title} (${item.size}, ${item.sleeve === 'long' ? 'آستین‌دار' : 'بدون آستین'})</p>
+                <p>${item.price.toLocaleString()} تومان</p>
+            `;
+            cartItems.appendChild(itemElement);
+            total += item.price;
+        });
+        cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
     }
-}
 
-function addToCart() {
+    cartBtn.addEventListener('click', () => {
+        cartModal.style.display = 'flex';
+        updateCart();
+    });
+
+    closeCart.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+    });
+
+    clearCartBtn.addEventListener('click', () => {
+        localStorage.setItem('cart', JSON.stringify([]));
+        updateCart();
+    });
+
+    window.addEventListener('click', (e) => {
+        if (e.target === cartModal) {
+            cartModal.style.display = 'none';
+        }
+    });
+
+    // Product Details
     const urlParams = new URLSearchParams(window.location.search);
-    const kitId = urlParams.get('kit');
-    const kit = kits[kitId];
-    const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
-    const sleeveText = sleeve === 'long' ? 'آستین‌دار' : 'بدون آستین';
-    const size = document.querySelector('input[name="size"]:checked').value;
+    const kit = urlParams.get('kit');
+    const products = {
+        'barca': {
+            title: 'کیت بارسلونا',
+            description: 'لباس اصلی فصل 2024-2025',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/barca.jpg',
+            originalPrice: 900000,
+            discountedPrice: 765000,
+            sleevePrices: { long: 900000, short: 850000 }
+        },
+        'real': {
+            title: 'کیت رئال مادرید',
+            description: 'لباس خانگی فصل 2024-2025',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/real.jpg',
+            originalPrice: 900000,
+            discountedPrice: 765000,
+            sleevePrices: { long: 900000, short: 850000 }
+        },
+        'esteghlal': {
+            title: 'کیت استقلال',
+            description: 'لباس خانگی فصل 1404-1405',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/es.jpeg',
+            originalPrice: 800000,
+            discountedPrice: 680000,
+            sleevePrices: { long: 800000, short: 750000 }
+        },
+        'perspolis': {
+            title: 'کیت پرسپولیس',
+            description: 'لباس اصلی فصل 1404-1405',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpg',
+            originalPrice: 800000,
+            discountedPrice: 680000,
+            sleevePrices: { long: 800000, short: 750000 }
+        },
+        'chelsea': {
+            title: 'کیت چلسی',
+            description: 'لباس اصلی فصل 2024-2025',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jpg',
+            originalPrice: 900000,
+            discountedPrice: 765000,
+            sleevePrices: { long: 900000, short: 850000 }
+        },
+        'man-utd': {
+            title: 'کیت منچستر یونایتد',
+            description: 'لباس خانگی فصل 2024-2025',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/MUN.jpg',
+            originalPrice: 900000,
+            discountedPrice: 765000,
+            sleevePrices: { long: 900000, short: 850000 }
+        }
+    };
 
-    alert(`${kit.title} (${sleeveText}, سایز ${size}) به سبد خرید اضافه شد!`);
-}
+    if (products[kit]) {
+        document.getElementById('product-title').textContent = products[kit].title;
+        document.getElementById('product-description').textContent = products[kit].description;
+        document.getElementById('product-img').src = products[kit].image;
+        document.getElementById('original-price').textContent = `${products[kit].originalPrice.toLocaleString()} تومان`;
+        document.getElementById('discounted-price').textContent = `${products[kit].discountedPrice.toLocaleString()} تومان`;
+
+        const sleeveOptions = document.querySelectorAll('input[name="sleeve"]');
+        sleeveOptions.forEach(option => {
+            option.addEventListener('change', () => {
+                const sleeve = option.value;
+                document.getElementById('original-price').textContent = `${products[kit].sleevePrices[sleeve].toLocaleString()} تومان`;
+                document.getElementById('discounted-price').textContent = `${(products[kit].sleevePrices[sleeve] * 0.85).toLocaleString()} تومان`;
+            });
+        });
+    } else {
+        document.querySelector('.product-container').innerHTML = '<p>محصول یافت نشد!</p>';
+    }
+
+    // Add to Cart
+    window.addToCart = function() {
+        const size = document.querySelector('input[name="size"]:checked').value;
+        const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
+        const price = products[kit].sleevePrices[sleeve] * 0.85;
+        addToCart(products[kit].title, size, sleeve, price);
+    };
+
+    // Scroll Animation for Product
+    const productContainer = document.querySelector('.product-container');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(productContainer);
+});

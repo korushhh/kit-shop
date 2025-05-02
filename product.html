@@ -16,9 +16,26 @@
                 <li><a href="index.html#home">خانه</a></li>
                 <li><a href="index.html#shop">کیت‌ها</a></li>
                 <li><a href="index.html#contact">تماس</a></li>
+                <li>
+                    <a href="#" id="cart-btn" class="cart-btn">
+                        <span class="cart-icon">🛒</span>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span id="close-cart" class="close">&times;</span>
+            <h2>سبد خرید</h2>
+            <div id="cart-items" class="cart-items"></div>
+            <p id="cart-total" class="cart-total">جمع: ۰ تومان</p>
+            <button id="clear-cart" class="clear-cart">خالی کردن سبد</button>
+        </div>
+    </div>
 
     <!-- Product Section -->
     <section class="product-detail">

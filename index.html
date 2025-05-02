@@ -16,9 +16,26 @@
                 <li><a href="#home">خانه</a></li>
                 <li><a href="#shop">کیت‌ها</a></li>
                 <li><a href="#contact">تماس</a></li>
+                <li>
+                    <a href="#" id="cart-btn" class="cart-btn">
+                        <span class="cart-icon">🛒</span>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span id="close-cart" class="close">&times;</span>
+            <h2>سبد خرید</h2>
+            <div id="cart-items" class="cart-items"></div>
+            <p id="cart-total" class="cart-total">جمع: ۰ تومان</p>
+            <button id="clear-cart" class="clear-cart">خالی کردن سبد</button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -30,8 +47,14 @@
     <!-- Shop Section -->
     <section id="shop" class="shop">
         <h2>کیت‌های هواداری</h2>
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">همه</button>
+            <button class="filter-btn" data-filter="european">اروپایی</button>
+            <button class="filter-btn" data-filter="iranian">ایرانی</button>
+            <button class="filter-btn" data-filter="cheapest">ارزان‌ترین</button>
+        </div>
         <div class="products">
-            <div class="product">
+            <div class="product" data-category="european" data-price="765000">
                 <img src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/barca.jpg" alt="کیت بارسلونا">
                 <h3>کیت بارسلونا</h3>
                 <p>لباس اصلی فصل 2024-2025</p>
@@ -46,7 +69,7 @@
                 <p class="stock">موجود</p>
                 <a href="product.html?kit=barca" class="product-btn">مشاهده و خرید</a>
             </div>
-            <div class="product">
+            <div class="product" data-category="european" data-price="765000">
                 <img src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/real.jpg" alt="کیت رئال مادرید">
                 <h3>کیت رئال مادرید</h3>
                 <p>لباس خانگی فصل 2024-2025</p>
@@ -61,7 +84,7 @@
                 <p class="stock">موجود</p>
                 <a href="product.html?kit=real" class="product-btn">مشاهده و خرید</a>
             </div>
-            <div class="product">
+            <div class="product" data-category="iranian" data-price="680000">
                 <img src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/es.jpeg" alt="کیت استقلال">
                 <h3>کیت استقلال</h3>
                 <p>لباس خانگی فصل 1404-1405</p>
@@ -76,7 +99,7 @@
                 <p class="stock">موجود</p>
                 <a href="product.html?kit=esteghlal" class="product-btn">مشاهده و خرید</a>
             </div>
-            <div class="product">
+            <div class="product" data-category="iranian" data-price="680000">
                 <img src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpg" alt="کیت پرسپولیس">
                 <h3>کیت پرسپولیس</h3>
                 <p>لباس اصلی فصل 1404-1405</p>
@@ -91,8 +114,8 @@
                 <p class="stock">موجود</p>
                 <a href="product.html?kit=perspolis" class="product-btn">مشاهده و خرید</a>
             </div>
-            <div class="product">
-                <img src="https://github.com/korushhh/kit-shop/blob/main/images/chelsea.jpg" alt="کیت چلسی">
+            <div class="product" data-category="european" data-price="765000">
+                <img src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jpg" alt="کیت چلسی">
                 <h3>کیت چلسی</h3>
                 <p>لباس اصلی فصل 2024-2025</p>
                 <div class="sleeve-options">
@@ -106,7 +129,7 @@
                 <p class="stock">موجود</p>
                 <a href="product.html?kit=chelsea" class="product-btn">مشاهده و خرید</a>
             </div>
-            <div class="product">
+            <div class="product" data-category="european" data-price="765000">
                 <img src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/MUN.jpg" alt="کیت منچستر یونایتد">
                 <h3>کیت منچستر یونایتد</h3>
                 <p>لباس خانگی فصل 2024-2025</p>
