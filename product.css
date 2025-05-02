@@ -1,8 +1,15 @@
+@font-face {
+    font-family: 'Digikala';
+    src: url('fonts/Digikala -_font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Noto Serif Display', 'Vazir', sans-serif;
+    font-family: 'Digikala', 'Vazir', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -37,7 +44,7 @@ header.scrolled {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-    font-family: 'Noto Serif Display', serif;
+    font-family: 'Digikala', sans-serif;
 }
 
 nav ul {
@@ -52,7 +59,7 @@ nav ul li a {
     font-weight: 600;
     position: relative;
     transition: color 0.3s ease;
-    font-family: 'Noto Serif Display', serif;
+    font-family: 'Digikala', sans-serif;
 }
 
 nav ul li a::after {
@@ -115,7 +122,7 @@ nav ul li a:hover {
     font-size: 2.5rem;
     margin-bottom: 1rem;
     color: #d32f2f;
-    font-family: 'Noto Serif Display', serif;
+    font-family: 'Digikala', sans-serif;
 }
 
 .product-info p {
@@ -132,7 +139,7 @@ nav ul li a:hover {
 .size-options h3, .sleeve-options h3 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
-    font-family: 'Noto Serif Display', serif;
+    font-family: 'Digikala', sans-serif;
 }
 
 .size-options label, .sleeve-options label {
@@ -184,7 +191,7 @@ nav ul li a:hover {
     text-transform: uppercase;
     box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Noto Serif Display', serif;
+    font-family: 'Digikala', sans-serif;
 }
 
 .product-info button:hover {
