@@ -37,6 +37,7 @@ header.scrolled {
     text-transform: uppercase;
     letter-spacing: 3px;
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    font-family: 'Noto Serif Display', serif;
 }
 
 nav ul {
@@ -51,6 +52,7 @@ nav ul li a {
     font-weight: 600;
     position: relative;
     transition: color 0.3s ease;
+    font-family: 'Noto Serif Display', serif;
 }
 
 nav ul li a::after {
@@ -99,6 +101,7 @@ nav ul li a:hover {
     margin-bottom: 1.5rem;
     text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
     animation: fadeInUp 1.2s ease-in-out;
+    font-family: 'Noto Serif Display', serif;
 }
 
 .hero p {
@@ -118,6 +121,7 @@ nav ul li a:hover {
     box-shadow: 0 0 20px rgba(255, 202, 40, 0.6);
     animation: pulse 2s infinite;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Noto Serif Display', serif;
 }
 
 .btn:hover {
@@ -153,6 +157,7 @@ nav ul li a:hover {
     margin-bottom: 3.5rem;
     color: #ffca28;
     text-shadow: 0 0 15px rgba(255, 202, 40, 0.6);
+    font-family: 'Noto Serif Display', serif;
 }
 
 .products {
@@ -214,6 +219,7 @@ nav ul li a:hover {
     color: #121212;
     font-size: 1.5rem;
     font-weight: 700;
+    font-family: 'Noto Serif Display', serif;
 }
 
 .sleeve-options {
@@ -273,6 +279,7 @@ nav ul li a:hover {
     text-decoration: none;
     display: inline-block;
     text-align: center;
+    font-family: 'Noto Serif Display', serif;
 }
 
 .product-btn:hover {
@@ -292,6 +299,7 @@ nav ul li a:hover {
     margin-bottom: 2rem;
     color: #ffca28;
     text-shadow: 0 0 15px rgba(255, 202, 40, 0.6);
+    font-family: 'Noto Serif Display', serif;
 }
 
 .contact p {
@@ -341,6 +349,7 @@ nav ul li a:hover {
     text-transform: uppercase;
     box-shadow: 0 0 20px rgba(255, 202, 40, 0.6);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Noto Serif Display', serif;
 }
 
 .contact button:hover {
