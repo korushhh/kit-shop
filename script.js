@@ -5,14 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('active');
-        menuToggle.textContent = nav.classList.contains('active') ? '×' : '☰';
-    });
-
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -35,6 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateCart() {
         try {
+            console.log('Updating cart:', cart);
             cartItems.innerHTML = '';
             let total = 0;
             cart.forEach(item => {
@@ -50,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
             cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
             cartCount.textContent = cart.length;
             localStorage.setItem('cart', JSON.stringify(cart));
-            console.log('Cart updated:', cart);
         } catch (error) {
             console.error('خطا در آپدیت سبد خرید:', error);
+            alert('خطا در آپدیت سبد خرید!');
         }
     }
 
@@ -123,10 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
             cart.push({ title, size, sleeve, price });
             localStorage.setItem('cart', JSON.stringify(cart));
             cartCount.textContent = cart.length;
-            alert('محصول به سبد خرید اضافه شد!');
+            updateCart();
+            alert('محصول با موفقیت به سبد خرید اضافه شد!');
         } catch (error) {
             console.error('خطا در اضافه کردن به سبد خرید:', error);
-            alert('خطا: نمی‌توان محصول را به سبد خرید اضافه کرد.');
+            alert('خطا: نمی‌توان محصول را به سبد خرید اضافه کرد!');
         }
     };
+
+    // Initialize cart count
+    cartCount.textContent = cart.length;
 });
