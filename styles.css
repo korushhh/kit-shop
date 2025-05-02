@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Vazir', sans-serif;
+    font-family: 'Noto Serif Display', 'Vazir', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -13,7 +13,7 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
+
 header {
     background: linear-gradient(90deg, #d32f2f, #b71c1c);
     padding: 1.5rem 2rem;
@@ -108,6 +108,7 @@ nav ul li a:hover {
     font-size: 1.5rem;
     margin-bottom: 3rem;
     opacity: 0.85;
+    font-family: 'Vazir', sans-serif;
 }
 
 .btn {
@@ -145,7 +146,7 @@ nav ul li a:hover {
     100% { box-shadow: 0 0 15px rgba(255, 202, 40, 0.6); }
 }
 
-/* Shop Section */
+
 .shop {
     padding: 5rem 2rem;
     text-align: center;
@@ -233,6 +234,7 @@ nav ul li a:hover {
     font-size: 1rem;
     color: #555;
     cursor: pointer;
+    font-family: 'Vazir', sans-serif;
 }
 
 .sleeve-options input {
@@ -287,7 +289,7 @@ nav ul li a:hover {
     box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
 }
 
-/* Contact Section */
+
 .contact {
     padding: 5rem 2rem;
     background: linear-gradient(180deg, #263238, #37474f);
@@ -306,6 +308,7 @@ nav ul li a:hover {
     font-size: 1.3rem;
     margin-bottom: 3rem;
     opacity: 0.9;
+    font-family: 'Vazir', sans-serif;
 }
 
 .contact form {
@@ -326,6 +329,7 @@ nav ul li a:hover {
     font-size: 1.1rem;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease;
+    font-family: 'Vazir', sans-serif;
 }
 
 .contact input:focus,
@@ -357,16 +361,17 @@ nav ul li a:hover {
     box-shadow: 0 0 30px rgba(255, 202, 40, 0.9);
 }
 
-/* Footer */
+
 footer {
     background: linear-gradient(90deg, #1a237e, #263238);
     color: #fff;
     text-align: center;
     padding: 2.5rem;
     font-size: 1rem;
+    font-family: 'Vazir', sans-serif;
 }
 
-/* Responsive */
+
 @media (max-width: 1024px) {
     .hero h1 {
         font-size: 3rem;

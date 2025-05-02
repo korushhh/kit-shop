@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Vazir', sans-serif;
+    font-family: 'Noto Serif Display', 'Vazir', sans-serif;
     scroll-behavior: smooth;
 }
 
@@ -122,6 +122,7 @@ nav ul li a:hover {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     color: #555;
+    font-family: 'Vazir', sans-serif;
 }
 
 .size-options, .sleeve-options {
@@ -139,6 +140,7 @@ nav ul li a:hover {
     color: #555;
     margin-left: 1.5rem;
     cursor: pointer;
+    font-family: 'Vazir', sans-serif;
 }
 
 .size-options input, .sleeve-options input {
@@ -197,6 +199,7 @@ footer {
     text-align: center;
     padding: 2.5rem;
     font-size: 1rem;
+    font-family: 'Vazir', sans-serif;
 }
 
 /* Responsive */
