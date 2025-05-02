@@ -1,7 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Cart Count Update
+    // Initialize cart count
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    document.getElementById('cart-count').textContent = cart.length;
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
 
     // Product Data
     const products = {
@@ -40,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         chelsea: {
             title: 'کیت چلسی',
             description: 'لباس اصلی فصل 2024-2025',
-            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jfif',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jpg',
             originalPrice: 900000,
             discountedPrice: 765000,
             shortSleevePrice: 850000
@@ -89,8 +92,32 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add to Cart Function
     window.addToCart = function() {
         try {
-            const size = document.querySelector('input[name="size"]:checked').value;
-            const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
+            const sizeInputs = document.querySelectorAll('input[name="size"]');
+            const sleeveInputs = document.querySelectorAll('input[name="sleeve"]');
+            
+            // Find checked size
+            let size = null;
+            for (const input of sizeInputs) {
+                if (input.checked) {
+                    size = input.value;
+                    break;
+                }
+            }
+            
+            // Find checked sleeve
+            let sleeve = null;
+            for (const input of sleeveInputs) {
+                if (input.checked) {
+                    sleeve = input.value;
+                    break;
+                }
+            }
+
+            if (!size || !sleeve) {
+                alert('لطفاً سایز و نوع آستین را انتخاب کنید!');
+                return;
+            }
+
             const price = sleeve === 'long' ? product.discountedPrice : product.shortSleevePrice;
 
             console.log('Adding to cart:', {
@@ -101,10 +128,11 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Call addToCart from script.js
-            if (typeof addToCart === 'function') {
-                addToCart(product.title, size, sleeve, price);
+            if (typeof window.addToCartGlobal === 'function') {
+                window.addToCartGlobal(product.title, size, sleeve, price);
+                console.log('Product added to cart successfully');
             } else {
-                console.error('تابع addToCart تعریف نشده است');
+                console.error('تابع addToCartGlobal تعریف نشده است');
                 alert('خطا: نمی‌توان محصول را به سبد خرید اضافه کرد. لطفاً دوباره امتحان کنید.');
             }
         } catch (error) {
