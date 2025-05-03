@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price;
         });
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
+        const cartCount = document.getElementById('cart-count');
+        cartCount.textContent = cart.length;
     }
 
     cartBtn.addEventListener('click', () => {
@@ -146,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
         const price = products[kit].sleevePrices[sleeve] * 0.85;
         addToCart(products[kit].title, size, sleeve, price);
+        updateCart();
     };
 
     // Scroll Animation for Product
