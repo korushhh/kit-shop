@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const clearCartBtn = document.getElementById('clear-cart');
+    const cartCount = document.getElementById('cart-count');
 
     function updateCart() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -28,23 +29,30 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price;
         });
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
-        const cartCount = document.getElementById('cart-count');
-        cartCount.textContent = cart.length;
+        if (cartCount) {
+            cartCount.textContent = cart.length;
+        }
     }
 
-    cartBtn.addEventListener('click', () => {
-        cartModal.style.display = 'flex';
-        updateCart();
-    });
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            cartModal.style.display = 'flex';
+            updateCart();
+        });
+    }
 
-    closeCart.addEventListener('click', () => {
-        cartModal.style.display = 'none';
-    });
+    if (closeCart) {
+        closeCart.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+    }
 
-    clearCartBtn.addEventListener('click', () => {
-        localStorage.setItem('cart', JSON.stringify([]));
-        updateCart();
-    });
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', () => {
+            localStorage.setItem('cart', JSON.stringify([]));
+            updateCart();
+        });
+    }
 
     window.addEventListener('click', (e) => {
         if (e.target === cartModal) {
@@ -104,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
             discountedPrice: 765000,
             sleevePrices: { long: 900000, short: 850000 }
         },
-            'ACM': {
+        'ACM': {
             title: 'کیت آث میلان',
             description: 'لباس خانگی فصل 2024-2025',
             image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ACM.jpg',
@@ -119,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
             originalPrice: 950000,
             discountedPrice: 800000,
             sleevePrices: { long: 950000, short: 900000 }
-
         }
     };
 
@@ -147,8 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const size = document.querySelector('input[name="size"]:checked').value;
         const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
         const price = products[kit].sleevePrices[sleeve] * 0.85;
-        addToCart(products[kit].title, size, sleeve, price);
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ title: products[kit].title, size, sleeve, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+        if (cartCount) {
+            cartCount.textContent = cart.length;
+        }
         updateCart();
+        alert('محصول به سبد خرید اضافه شد!');
     };
 
     // Scroll Animation for Product
