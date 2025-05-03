@@ -168,7 +168,7 @@ nav ul li a:hover {
 .clear-cart {
     background: linear-gradient(90deg, #d32f2f, #b71c1c);
     color: #fff;
-    border appendices: none;
+    border: none;
     padding: 0.8rem 2rem;
     border-radius: 50px;
     cursor: pointer;
@@ -273,8 +273,8 @@ nav ul li a:hover {
 }
 
 .original-price {
-    text-decoration: line-through;
-    color: #888;
+    text-decoration: line-through !important;
+    color: #888 !important;
     font-size: 1.2rem;
 }
 
