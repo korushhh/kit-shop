@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'perspolis': {
             title: 'کیت پرسپولیس',
             description: 'لباس اصلی فصل 1404-1405',
-            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpg',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpeg',
             originalPrice: 800000,
             discountedPrice: 680000,
             sleevePrices: { long: 800000, short: 750000 }
