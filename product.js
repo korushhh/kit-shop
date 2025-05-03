@@ -109,6 +109,14 @@ document.addEventListener('DOMContentLoaded', () => {
             originalPrice: 900000,
             discountedPrice: 765000,
             sleevePrices: { long: 900000, short: 850000 }
+        },
+        'classic-inter-milan': {
+            title: 'کیت اینتر میلان',
+            description: 'لباس خانگی کلاسیک',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ClassicInter.jpg',
+            originalPrice: 950000,
+            discountedPrice: 800000,
+            sleevePrices: { long: 950000, short: 900000 }
 
         }
     };
