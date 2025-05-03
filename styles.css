@@ -416,25 +416,27 @@ nav ul li a:active {
 .price {
     margin-bottom: 0.8rem;
     display: flex;
-    justify-content: center; /* فیکس وسط‌چین */
+    justify-content: center; 
     align-items: center;
     gap: 0.8rem;
     text-align: center;
-    width: 100%; /* مطمئن می‌شیم کل عرض رو بگیره */
+    width: 100%; 
 }
 
 .original-price {
     text-decoration: line-through;
     color: #888;
     font-size: 0.9rem;
-    flex: 0 1 auto; /* جلوگیری از کشیده شدن */
+    flex: 0 1 auto; 
+    text-align : center;
 }
 
 .discounted-price {
     color: #d32f2f;
     font-weight: 700;
     font-size: 1rem;
-    flex: 0 1 auto; /* جلوگیری از کشیده شدن */
+    flex: 0 1 auto;
+    text-align : center;
 }
 
 .stock {
