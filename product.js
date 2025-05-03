@@ -101,6 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
             originalPrice: 900000,
             discountedPrice: 765000,
             sleevePrices: { long: 900000, short: 850000 }
+        },
+            'ACM': {
+            title: 'کیت آث میلان',
+            description: 'لباس خانگی فصل 2024-2025',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ACM.jpg',
+            originalPrice: 900000,
+            discountedPrice: 765000,
+            sleevePrices: { long: 900000, short: 850000 }
+
         }
     };
 
