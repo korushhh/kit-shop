@@ -418,9 +418,9 @@ nav ul li a:hover {
 }
 
 .sleeve-options label {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
     color: #555;
-    margin: 0.55rem;
+    margin: 0.6rem;
     display: block;
     font-family: 'Vazir', sans-serif;
 }
@@ -436,13 +436,13 @@ nav ul li a:hover {
 .original-price {
     text-decoration: line-through;
     color: #888;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }
 
 .discounted-price {
     color: #d32f2f;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 .stock {
@@ -499,13 +499,29 @@ nav ul li a:hover {
     text-align: right;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
     opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateX(-100%);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .faq-item.visible {
     opacity: 1;
-    transform: scale(1);
+    transform: translateX(0);
+    animation: slideIn 0.6s ease forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(-20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .faq-item h3 {
