@@ -256,7 +256,7 @@ nav ul li a:hover {
 .size-options label, .sleeve-options label {
     font-size: 1.1rem;
     color: #555;
-
+    margin-left: 1.5rem;
     cursor: pointer;
     font-family: 'Vazir', sans-serif;
 }
@@ -272,16 +272,17 @@ nav ul li a:hover {
     gap: 1.2rem;
 }
 
-.original-price {
+.price .original-price {
     text-decoration: line-through !important;
     color: #888 !important;
-    font-size: 1.2rem;
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
 }
 
-.discounted-price {
-    color: #d32f2f;
-    font-weight: 700;
-    font-size: 1.4rem;
+.price .discounted-price {
+    color: #d32f2f !important;
+    font-weight: 700 !important;
+    font-size: 1.4rem !important;
 }
 
 .stock {
