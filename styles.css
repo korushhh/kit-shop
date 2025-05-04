@@ -418,9 +418,9 @@ nav ul li a:hover {
 }
 
 .sleeve-options label {
-    font-size: 1rem;
+    font-size: 0.9rem;
     color: #555;
-    margin: 0.5rem;
+    margin: 0.55rem;
     display: block;
     font-family: 'Vazir', sans-serif;
 }
@@ -436,13 +436,13 @@ nav ul li a:hover {
 .original-price {
     text-decoration: line-through;
     color: #888;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .discounted-price {
     color: #d32f2f;
     font-weight: 700;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 .stock {
