@@ -18,6 +18,13 @@
                 <li><a href="#shop">کیت‌ها</a></li>
                 <li><a href="#faq">سوالات متداول</a></li>
                 <li><a href="#contact">تماس</a></li>
+                <li><a href="favorites.html">علاقه‌مندی‌ها</a></li>
+                <li>
+                    <a href="#" id="favorites-btn" class="favorites-btn">
+                        <span class="favorites-icon">❤️</span>
+                        <span id="favorites-count" class="favorites-count">0</span>
+                    </a>
+                </li>
                 <li>
                     <a href="#" id="cart-btn" class="cart-btn">
                         <span class="cart-icon">🛒</span>
@@ -39,6 +46,16 @@
         </div>
     </div>
 
+    <!-- Favorites Modal -->
+    <div id="favorites-modal" class="favorites-modal">
+        <div class="favorites-content">
+            <span id="close-favorites" class="close">×</span>
+            <h2>علاقه‌مندی‌ها</h2>
+            <div id="favorites-items" class="favorites-items"></div>
+            <button id="clear-favorites" class="clear-favorites">خالی کردن علاقه‌مندی‌ها</button>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <h1>عشقت به تیم محبوبت رو نشون بده!</h1>
@@ -57,6 +74,7 @@
         </div>
         <div class="products">
             <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="barca" onclick="toggleFavorite('barca')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/barca.jpg" alt="کیت بارسلونا">
                 <h3>کیت بارسلونا</h3>
                 <p>لباس اصلی فصل 2024-2025</p>
@@ -72,6 +90,7 @@
                 <a href="product.html?kit=barca" class="product-btn">مشاهده و خرید</a>
             </div>
             <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="real" onclick="toggleFavorite('real')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/real.jpg" alt="کیت رئال مادرید">
                 <h3>کیت رئال مادرید</h3>
                 <p>لباس خانگی فصل 2024-2025</p>
@@ -87,6 +106,7 @@
                 <a href="product.html?kit=real" class="product-btn">مشاهده و خرید</a>
             </div>
             <div class="product" data-category="iranian" data-price="680000">
+                <button class="favorite-btn" data-kit="esteghlal" onclick="toggleFavorite('esteghlal')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/es.jpeg" alt="کیت استقلال">
                 <h3>کیت استقلال</h3>
                 <p>لباس خانگی فصل 1404-1405</p>
@@ -102,6 +122,7 @@
                 <a href="product.html?kit=esteghlal" class="product-btn">مشاهده و خرید</a>
             </div>
             <div class="product" data-category="iranian" data-price="680000">
+                <button class="favorite-btn" data-kit="perspolis" onclick="toggleFavorite('perspolis')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpeg" alt="کیت پرسپولیس">
                 <h3>کیت پرسپولیس</h3>
                 <p>لباس اصلی فصل 1404-1405</p>
@@ -117,6 +138,7 @@
                 <a href="product.html?kit=perspolis" class="product-btn">مشاهده و خرید</a>
             </div>
             <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="chelsea" onclick="toggleFavorite('chelsea')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jpg" alt="کیت چلسی">
                 <h3>کیت چلسی</h3>
                 <p>لباس اصلی فصل 2024-2025</p>
@@ -132,6 +154,7 @@
                 <a href="product.html?kit=chelsea" class="product-btn">مشاهده و خرید</a>
             </div>
             <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="man-utd" onclick="toggleFavorite('man-utd')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/MUN.jpg" alt="کیت منچستر یونایتد">
                 <h3>کیت منچستر یونایتد</h3>
                 <p>لباس خانگی فصل 2024-2025</p>
@@ -147,6 +170,7 @@
                 <a href="product.html?kit=man-utd" class="product-btn">مشاهده و خرید</a>
             </div>           
             <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="ACM" onclick="toggleFavorite('ACM')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ACM.jpg" alt="کیت آث میلان">
                 <h3>کیت آث میلان</h3>
                 <p>لباس خانگی فصل 2024-2025</p>
@@ -162,6 +186,7 @@
                 <a href="product.html?kit=ACM" class="product-btn">مشاهده و خرید</a>
             </div>
             <div class="product" data-category="european" data-price="800000">
+                <button class="favorite-btn" data-kit="classic-inter-milan" onclick="toggleFavorite('classic-inter-milan')">❤️</button>
                 <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ClassicInter.webp" alt="کیت اینتر میلان">
                 <h3>کیت اینتر میلان</h3>
                 <p>لباس خانگی کلاسیک</p>
@@ -224,6 +249,11 @@
         <p>تمامی حقوق محفوظ است © 1404</p>
         <p>ایمیل: naeemikorosh37@gmail.com | تلگرام: 09966897203</p>
     </footer>
+
+    <!-- Telegram Button -->
+    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
 
     <script src="script.js"></script>
 </body>
