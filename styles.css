@@ -235,14 +235,14 @@ nav ul li a:hover {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(90deg, #0088cc, #00a8e8);
+    background: #fff;
     border-radius: 50%;
     width: 60px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
 }
@@ -254,7 +254,7 @@ nav ul li a:hover {
 
 .telegram-btn:hover {
     transform: scale(1.2);
-    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.7);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Hero Section */
@@ -523,17 +523,31 @@ nav ul li a:hover {
     text-align: right;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
     opacity: 0;
+}
+
+.faq-item:nth-child(odd) {
     transform: translateX(-100%);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.faq-item:nth-child(even) {
+    transform: translateX(100%);
 }
 
 .faq-item.visible {
     opacity: 1;
     transform: translateX(0);
-    animation: slideIn 0.6s ease forwards;
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-@keyframes slideIn {
+.faq-item:nth-child(odd).visible {
+    animation: slideInFromLeft 0.6s ease forwards;
+}
+
+.faq-item:nth-child(even).visible {
+    animation: slideInFromRight 0.6s ease forwards;
+}
+
+@keyframes slideInFromLeft {
     0% {
         opacity: 0;
         transform: translateX(-100%);
@@ -541,6 +555,21 @@ nav ul li a:hover {
     50% {
         opacity: 0.5;
         transform: translateX(-20%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translateX(20%);
     }
     100% {
         opacity: 1;
