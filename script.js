@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearCartBtn = document.getElementById('clear-cart');
     const cartCount = document.getElementById('cart-count');
 
+    function updateCartCount() {
+        if (cartCount) {
+            cartCount.textContent = cart.length;
+        }
+    }
+
     function updateCart() {
         cartItems.innerHTML = '';
         let total = 0;
@@ -39,23 +45,29 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price;
         });
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
-        cartCount.textContent = cart.length;
-        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
     }
 
-    cartBtn.addEventListener('click', () => {
-        cartModal.style.display = 'flex';
-        updateCart();
-    });
+    if (cartBtn) {
+        cartBtn.addEventListener('click', () => {
+            cartModal.style.display = 'flex';
+            updateCart();
+        });
+    }
 
-    closeCart.addEventListener('click', () => {
-        cartModal.style.display = 'none';
-    });
+    if (closeCart) {
+        closeCart.addEventListener('click', () => {
+            cartModal.style.display = 'none';
+        });
+    }
 
-    clearCartBtn.addEventListener('click', () => {
-        cart = [];
-        updateCart();
-    });
+    if (clearCartBtn) {
+        clearCartBtn.addEventListener('click', () => {
+            cart = [];
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCart();
+        });
+    }
 
     window.addEventListener('click', (e) => {
         if (e.target === cartModal) {
@@ -102,6 +114,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
 
     products.forEach(product => observer.observe(product));
+    const faqItems = document.querySelectorAll('.faq-item');
+    faqItems.forEach(item => observer.observe(item));
+
+    // Initialize cart count
+    updateCartCount();
 });
 
 // Expose addToCart for product.js
@@ -109,6 +126,9 @@ function addToCart(title, size, sleeve, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ title, size, sleeve, price });
     localStorage.setItem('cart', JSON.stringify(cart));
-    document.getElementById('cart-count').textContent = cart.length;
+    const cartCount = document.getElementById('cart-count');
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
     alert('محصول به سبد خرید اضافه شد!');
 }
