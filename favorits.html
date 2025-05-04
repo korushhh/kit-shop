@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>علاقه‌مندی‌ها - فروشگاه کیت هواداری کوروش</title>
+    <link rel="stylesheet" href="favorites.css">
+    <link href="https://v1.fontapi.ir/css/Vazir" rel="stylesheet">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">KitBaz</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">خانه</a></li>
+                <li><a href="index.html#shop">کیت‌ها</a></li>
+                <li><a href="index.html#faq">سوالات متداول</a></li>
+                <li><a href="index.html#contact">تماس</a></li>
+                <li><a href="favorites.html">علاقه‌مندی‌ها</a></li>
+                <li>
+                    <a href="#" id="cart-btn" class="cart-btn">
+                        <span class="cart-icon">🛒</span>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+        <div class="cart-content">
+            <span id="close-cart" class="close">×</span>
+            <h2>سبد خرید</h2>
+            <div id="cart-items" class="cart-items"></div>
+            <p id="cart-total" class="cart-total">جمع: ۰ تومان</p>
+            <button id="clear-cart" class="clear-cart">خالی کردن سبد</button>
+        </div>
+    </div>
+
+    <!-- Favorites Section -->
+    <section id="favorites" class="favorites">
+        <h2>علاقه‌مندی‌ها</h2>
+        <div id="favorites-list" class="favorites-list"></div>
+        <button id="clear-favorites" class="clear-favorites">خالی کردن علاقه‌مندی‌ها</button>
+    </section>
+
+    <!-- Telegram Button -->
+    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <p>طراحی‌شده توسط کوروش نعیمی</p>
+        <p>تمامی حقوق محفوظ است © 1404</p>
+        <p>ایمیل: naeemikorosh37@gmail.com | تلگرام: 09966897203</p>
+    </footer>
+
+    <script src="favorites.js"></script>
+</body>
+</html>
