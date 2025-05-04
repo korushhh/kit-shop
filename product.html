@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه کیت هواداری کوروش - محصول</title>
+    <title>محصول - فروشگاه کیت هواداری کوروش</title>
     <link rel="stylesheet" href="product.css">
     <link href="https://v1.fontapi.ir/css/Vazir" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -14,9 +14,11 @@
         <div class="logo">KitBaz</div>
         <nav>
             <ul>
-                <li><a href="index.html#home">خانه</a></li>
+                <li><a href="index.html">خانه</a></li>
                 <li><a href="index.html#shop">کیت‌ها</a></li>
+                <li><a href="index.html#faq">سوالات متداول</a></li>
                 <li><a href="index.html#contact">تماس</a></li>
+                <li><a href="favorites.html">علاقه‌مندی‌ها</a></li>
                 <li>
                     <a href="#" id="cart-btn" class="cart-btn">
                         <span class="cart-icon">🛒</span>
@@ -48,7 +50,7 @@
                 <h1 id="product-title"></h1>
                 <p id="product-description"></p>
                 <div class="size-options">
-                    <h3>سایز:</h3>
+                    <h3>انتخاب سایز:</h3>
                     <label><input type="radio" name="size" value="S" checked> S</label>
                     <label><input type="radio" name="size" value="M"> M</label>
                     <label><input type="radio" name="size" value="L"> L</label>
@@ -59,15 +61,21 @@
                     <label><input type="radio" name="sleeve" value="long" checked> آستین‌دار</label>
                     <label><input type="radio" name="sleeve" value="short"> بدون آستین</label>
                 </div>
-                <p class="price">
+                <div class="price">
                     <span id="original-price"></span>
                     <span id="discounted-price"></span>
-                </p>
+                </div>
                 <p class="stock">موجود</p>
                 <button onclick="addToCart()">افزودن به سبد خرید</button>
+                <button id="favorite-btn" onclick="toggleFavorite()">افزودن به علاقه‌مندی‌ها</button>
             </div>
         </div>
     </section>
+
+    <!-- Telegram Button -->
+    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
 
     <!-- Footer -->
     <footer>
