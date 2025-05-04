@@ -1,0 +1,375 @@
+@font-face {
+    font-family: 'Digikala';
+    src: url('fonts/Digikala -_font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Digikala', 'Vazir', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #121212;
+    color: #fff;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
+    transition: background 0.3s ease;
+}
+
+header.scrolled {
+    background: linear-gradient(90deg, #1a237e, #3f51b5);
+}
+
+.logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
+    font-family: 'Digikala', sans-serif;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    transition: color 0.3s ease;
+    font-family: 'Digikala', sans-serif;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #ffca28;
+    bottom: -6px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #ffca28;
+}
+
+.cart-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-icon {
+    font-size: 1.5rem;
+}
+
+.cart-count {
+    background: #ffca28;
+    color: #121212;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+/* Cart Modal */
+.cart-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-content {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    color: #121212;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.cart-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Digikala', sans-serif;
+}
+
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cart-item p {
+    font-family: 'Vazir', sans-serif;
+}
+
+.cart-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: 'Digikala', sans-serif;
+}
+
+.clear-cart {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Digikala', sans-serif;
+}
+
+.clear-cart:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+}
+
+/* Favorites Section */
+.favorites {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #263238, #37474f);
+    text-align: center;
+}
+
+.favorites h2 {
+    font-size: 2.8rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    font-family: 'Digikala', sans-serif;
+}
+
+.favorites-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.favorite-item {
+    background: #fff;
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    color: #121212;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.favorite-item.visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.favorite-item:hover {
+    transform: translateY(-10px);
+}
+
+.favorite-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.favorite-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #d32f2f;
+    font-family: 'Digikala', sans-serif;
+}
+
+.favorite-item p {
+    font-size: 1.1rem;
+    color: #555;
+    margin-bottom: 1rem;
+    font-family: 'Vazir', sans-serif;
+}
+
+.favorite-item .price {
+    font-size: 1.3rem;
+    color: #d32f2f;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.favorite-item .remove-btn {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Digikala', sans-serif;
+}
+
+.favorite-item .remove-btn:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+}
+
+.clear-favorites {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    color: #fff;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Digikala', sans-serif;
+    margin-top: 2rem;
+}
+
+.clear-favorites:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+}
+
+/* Telegram Button */
+.telegram-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(90deg, #0088cc, #00a8e8);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+}
+
+.telegram-btn img {
+    width: 40px;
+    height: 40px;
+}
+
+.telegram-btn:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.7);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(90deg, #1a237e, #263238);
+    color: #fff;
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 1rem;
+    font-family: 'Vazir', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .favorites {
+        padding: 3rem 1rem;
+    }
+
+    .favorite-item {
+        width: 100%;
+        max-width: 350px;
+    }
+
+    .telegram-btn {
+        width: 50px;
+        height: 50px;
+    }
+
+    .telegram-btn img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .favorites h2 {
+        font-size: 2rem;
+    }
+
+    .favorite-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .clear-favorites {
+        padding: 0.8rem 2rem;
+    }
+
+    .telegram-btn {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
