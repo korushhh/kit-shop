@@ -82,18 +82,18 @@ nav ul li a:hover {
     color: #ffca28;
 }
 
-.cart-btn, .favorites-btn {
+.cart-btn {
     position: relative;
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
 
-.cart-icon, .favorites-icon {
+.cart-icon {
     font-size: 1.5rem;
 }
 
-.cart-count, .favorites-count {
+.cart-count {
     background: #ffca28;
     color: #121212;
     border-radius: 50%;
@@ -126,30 +126,6 @@ nav ul li a:hover {
     color: #121212;
 }
 
-/* Favorites Modal */
-.favorites-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-}
-
-.favorites-content {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 15px;
-    max-width: 600px;
-    width: 90%;
-    position: relative;
-    color: #121212;
-}
-
 .close {
     position: absolute;
     top: 1rem;
@@ -158,19 +134,19 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-.cart-content h2, .favorites-content h2 {
+.cart-content h2 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
     font-family: 'Digikala', sans-serif;
 }
 
-.cart-items, .favorites-items {
+.cart-items {
     max-height: 300px;
     overflow-y: auto;
     margin-bottom: 1.5rem;
 }
 
-.cart-item, .favorites-item {
+.cart-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -178,7 +154,7 @@ nav ul li a:hover {
     border-bottom: 1px solid #ddd;
 }
 
-.cart-item p, .favorites-item p {
+.cart-item p {
     font-family: 'Vazir', sans-serif;
 }
 
@@ -189,7 +165,7 @@ nav ul li a:hover {
     font-family: 'Digikala', sans-serif;
 }
 
-.clear-cart, .clear-favorites {
+.clear-cart {
     background: linear-gradient(90deg, #d32f2f, #b71c1c);
     color: #fff;
     border: none;
@@ -203,31 +179,166 @@ nav ul li a:hover {
     font-family: 'Digikala', sans-serif;
 }
 
-.clear-cart:hover, .clear-favorites:hover {
+.clear-cart:hover {
     transform: scale(1.12);
     box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
 }
 
-/* Favorite Button */
-.favorite-btn {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    color: #888;
-    transition: color 0.2s ease, transform 0.2s ease;
+/* Product Section */
+.product-detail {
+    padding: 5rem 2rem;
+    background: linear-gradient(180deg, #1a237e, #263238);
+    text-align: center;
 }
 
-.favorite-btn.active {
+.product-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    gap: 3rem;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.product-container.visible {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.product-image img:hover {
+    transform: scale(1.1);
+}
+
+.product-info {
+    text-align: right;
+    color: #121212;
+    flex: 1;
+}
+
+.product-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
     color: #d32f2f;
-    transform: scale(1.2);
+    font-family: 'Digikala', sans-serif;
 }
 
-.favorite-btn:hover {
-    transform: scale(1.2);
+.product-info p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-family: 'Vazir', sans-serif;
+}
+
+.size-options, .sleeve-options {
+    margin: 1.5rem 0;
+}
+
+.size-options h3, .sleeve-options h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.8rem;
+    font-family: 'Digikala', sans-serif;
+}
+
+.size-options label, .sleeve-options label {
+    font-size: 1.1rem;
+    color: #555;
+    margin-left: 1.5rem;
+    cursor: pointer;
+    font-family: 'Vazir', sans-serif;
+}
+
+.size-options input, .sleeve-options input {
+    margin-left: 0.5rem;
+}
+
+.price {
+    margin: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+}
+
+.price .original-price {
+    text-decoration: line-through !important;
+    color: #888 !important;
+    font-size: 1.2rem !important;
+    font-weight: 400 !important;
+}
+
+.price .discounted-price {
+    color: #d32f2f !important;
+    font-weight: 700 !important;
+    font-size: 1.4rem !important;
+}
+
+.stock {
+    color: #4caf50;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.product-info button {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    color: #fff;
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    font-family: 'Digikala', sans-serif;
+    position: relative;
+    overflow: hidden;
+    margin: 0.5rem 0;
+}
+
+.product-info button#favorite-btn {
+    background: linear-gradient(90deg, #ffca28, #ffb300);
+}
+
+.product-info button#favorite-btn.favorited {
+    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+}
+
+.product-info button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.3s ease;
+}
+
+.product-info button:hover::before {
+    left: 100%;
+}
+
+.product-info button:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+}
+
+.product-info button#favorite-btn:hover {
+    box-shadow: 0 0 30px rgba(255, 202, 40, 0.9);
 }
 
 /* Telegram Button */
@@ -235,14 +346,14 @@ nav ul li a:hover {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    background: linear-gradient(90deg, #0088cc, #00a8e8);
     border-radius: 50%;
     width: 60px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(211, 47, 47, 0.5);
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
 }
@@ -254,374 +365,7 @@ nav ul li a:hover {
 
 .telegram-btn:hover {
     transform: scale(1.2);
-    box-shadow: 0 6px 20px rgba(211, 47, 47, 0.7);
-}
-
-/* Hero Section */
-.hero {
-    background: linear-gradient(180deg, #1a237e, #3f51b5);
-    text-align: center;
-    padding: 7rem 2rem;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-    font-family: 'Digikala', sans-serif;
-}
-
-.hero p {
-    font-size: 1.5rem;
-    margin-bottom: 2.5rem;
-    font-family: 'Vazir', sans-serif;
-}
-
-.hero .btn {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
-    color: #fff;
-    padding: 1rem 3rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Digikala', sans-serif;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero .btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    transition: left 0.3s ease;
-}
-
-.hero .btn:hover::before {
-    left: 100%;
-}
-
-.hero .btn:hover {
-    transform: scale(1.12);
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
-}
-
-/* Shop Section */
-.shop {
-    padding: 5rem 2rem;
-    background: linear-gradient(180deg, #263238, #37474f);
-    text-align: center;
-}
-
-.shop h2 {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    font-family: 'Digikala', sans-serif;
-}
-
-.filter-bar {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.filter-btn {
-    background: #fff;
-    color: #121212;
-    border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
-    font-family: 'Digikala', sans-serif;
-}
-
-.filter-btn:hover {
-    background: #ffca28;
-    color: #121212;
-    transform: scale(1.1);
-}
-
-.filter-btn.active {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
-    color: #fff;
-}
-
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center;
-}
-
-.product {
-    background: #fff;
-    border-radius: 15px;
-    padding: 1.5rem;
-    width: 300px;
-    text-align: center;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
-    color: #121212;
-    opacity: 0;
-    transform: scale(0.8);
-    display: flex;
-    flex-direction: column;
-    position: relative;
-}
-
-.product.visible {
-    opacity: 1;
-    transform: scale(1);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.product.out-of-stock {
-    opacity: 0.6;
-}
-
-.product:hover {
-    transform: translateY(-10px);
-}
-
-.product.out-of-stock:hover {
-    transform: none;
-}
-
-.product img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-}
-
-.product h3 {
-    font-size: 1.8rem;
-    margin-bottom: 0.8rem;
-    color: #d32f2f;
-    font-family: 'Digikala', sans-serif;
-}
-
-.product p {
-    font-size: 1.1rem;
-    color: #555;
-    margin-bottom: 1rem;
-    font-family: 'Vazir', sans-serif;
-}
-
-.sleeve-options {
-    margin: 1rem 0;
-}
-
-.sleeve-options label {
-    font-size: 0.7rem;
-    color: #555;
-    margin: 0.5rem;
-    display: block;
-    font-family: 'Vazir', sans-serif;
-}
-
-.price {
-    margin: 1rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
-.original-price {
-    text-decoration: line-through;
-    color: #888;
-    font-size: 0.9rem;
-}
-
-.discounted-price {
-    color: #d32f2f;
-    font-weight: 700;
-    font-size: 1.1rem;
-}
-
-.stock {
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.stock.out-of-stock {
-    color: #b71c1c;
-    font-weight: 700;
-}
-
-.product-btn {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
-    color: #fff;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 700;
-    text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Digikala', sans-serif;
-}
-
-.product-btn:hover {
-    transform: scale(1.12);
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
-}
-
-.product-btn.disabled {
-    background: #888;
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-
-.product-btn.disabled:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-/* FAQ Section */
-.faq {
-    padding: 5rem 2rem;
-    background: linear-gradient(180deg, #1a237e, #263238);
-    text-align: center;
-}
-
-.faq h2 {
-    font-size: 2.8rem;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    font-family: 'Digikala', sans-serif;
-}
-
-.faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.faq-item {
-    background: #fff;
-    border-radius: 15px;
-    padding: 1.5rem;
-    text-align: right;
-    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
-    opacity: 0;
-    transform: translateX(-100%);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.faq-item.visible {
-    opacity: 1;
-    transform: translateX(0);
-    animation: slideIn 0.6s ease forwards;
-}
-
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-100%);
-    }
-    50% {
-        opacity: 0.5;
-        transform: translateX(-20%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.faq-item h3 {
-    font-size: 1.6rem;
-    margin-bottom: 0.8rem;
-    color: #d32f2f;
-    font-family: 'Digikala', sans-serif;
-}
-
-.faq-item p {
-    font-size: 1.1rem;
-    color: #555;
-    font-family: 'Vazir', sans-serif;
-}
-
-/* Contact Section */
-.contact {
-    padding: 5rem 2rem;
-    background: linear-gradient(180deg, #37474f, #455a64);
-    text-align: center;
-}
-
-.contact h2 {
-    font-size: 2.8rem;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
-    font-family: 'Digikala', sans-serif;
-}
-
-.contact p {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    font-family: 'Vazir', sans-serif;
-}
-
-.contact form {
-    max-width: 600px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.contact input,
-.contact textarea {
-    padding: 1rem;
-    border: none;
-    border-radius: 10px;
-    font-size: 1.1rem;
-    font-family: 'Vazir', sans-serif;
-    background: #fff;
-    color: #121212;
-}
-
-.contact textarea {
-    resize: vertical;
-    min-height: 150px;
-}
-
-.contact button {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
-    color: #fff;
-    border: none;
-    padding: 1rem 3rem;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 700;
-    text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    font-family: 'Digikala', sans-serif;
-}
-
-.contact button:hover {
-    transform: scale(1.12);
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.7);
 }
 
 /* Footer */
@@ -636,118 +380,46 @@ footer {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .hero {
-        padding: 5rem 1rem;
+    .product-container {
+        flex-direction: column;
+        padding: 1.5rem;
     }
 
-    .hero h1 {
-        font-size: 2.5rem;
+    .product-image img {
+        max-width: 100%;
+        height: 250px;
     }
 
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    .shop {
-        padding: 3rem 1rem;
-    }
-
-    .filter-bar {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-
-    .product {
-        width: 100%;
-        max-width: 350px;
-    }
-
-    .faq {
-        padding: 3rem 1rem;
-    }
-
-    .faq-container {
-        padding: 0 1rem;
-    }
-
-    .contact {
-        padding: 3rem 1rem;
-    }
-
-    .contact form {
-        padding: 0 1rem;
+    .product-info h1 {
+        font-size: 2rem;
     }
 
     .telegram-btn {
         width: 50px;
         height: 50px;
-        bottom: 1.5rem;
-        right: 1.5rem;
     }
 
     .telegram-btn img {
         width: 30px;
         height: 30px;
     }
-
-    .favorites-modal {
-        padding: 1rem;
-    }
-
-    .favorites-content {
-        width: 95%;
-    }
 }
 
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2rem;
+    .product-detail {
+        padding: 3rem 1rem;
     }
 
-    .hero .btn {
-        padding: 0.8rem 2rem;
+    .product-info h1 {
+        font-size: 1.8rem;
     }
 
-    .shop h2,
-    .faq h2,
-    .contact h2 {
-        font-size: 2rem;
-    }
-
-    .filter-btn {
-        padding: 0.6rem 1.5rem;
-    }
-
-    .product h3 {
-        font-size: 1.5rem;
-    }
-
-    .faq-item h3 {
-        font-size: 1.4rem;
-    }
-
-    .contact input,
-    .contact textarea {
-        font-size: 1rem;
-    }
-
-    .contact button {
+    .product-info button {
         padding: 0.8rem 2rem;
     }
 
     .telegram-btn {
-        width: 40px;
-        height: 40px;
-        bottom: 1rem;
-        right: 1rem;
-    }
-
-    .telegram-btn img {
-        width: 25px;
-        height: 25px;
-    }
-
-    .favorite-btn {
-        font-size: 1.2rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
     }
 }
