@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const clearCartBtn = document.getElementById('clear-cart');
-    const cartCount = document.getElementById('cart-count');
 
     function updateCart() {
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -29,9 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price;
         });
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
-        if (cartCount) {
-            cartCount.textContent = cart.length;
-        }
     }
 
     if (cartBtn) {
@@ -145,6 +141,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('discounted-price').textContent = `${(products[kit].sleevePrices[sleeve] * 0.85).toLocaleString()} تومان`;
             });
         });
+
+        // Favorite Button State
+        const favoriteBtn = document.getElementById('favorite-btn');
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (favorites.some(item => item.kit === kit)) {
+            favoriteBtn.textContent = 'حذف از علاقه‌مندی‌ها';
+            favoriteBtn.classList.add('favorited');
+        }
     } else {
         document.querySelector('.product-container').innerHTML = '<p>محصول یافت نشد!</p>';
     }
@@ -154,14 +158,34 @@ document.addEventListener('DOMContentLoaded', () => {
         const size = document.querySelector('input[name="size"]:checked').value;
         const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
         const price = products[kit].sleevePrices[sleeve] * 0.85;
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ title: products[kit].title, size, sleeve, price });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        if (cartCount) {
-            cartCount.textContent = cart.length;
-        }
+        addToCart(products[kit].title, size, sleeve, price);
         updateCart();
-        alert('محصول به سبد خرید اضافه شد!');
+    };
+
+    // Toggle Favorite
+    window.toggleFavorite = function() {
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const favoriteBtn = document.getElementById('favorite-btn');
+        const isFavorited = favorites.some(item => item.kit === kit);
+
+        if (isFavorited) {
+            favorites = favorites.filter(item => item.kit !== kit);
+            favoriteBtn.textContent = 'افزودن به علاقه‌مندی‌ها';
+            favoriteBtn.classList.remove('favorited');
+            alert('محصول از علاقه‌مندی‌ها حذف شد!');
+        } else {
+            favorites.push({
+                kit,
+                title: products[kit].title,
+                image: products[kit].image,
+                discountedPrice: products[kit].discountedPrice
+            });
+            favoriteBtn.textContent = 'حذف از علاقه‌مندی‌ها';
+            favoriteBtn.classList.add('favorited');
+            alert('محصول به علاقه‌مندی‌ها اضافه شد!');
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(favorites));
     };
 
     // Scroll Animation for Product
