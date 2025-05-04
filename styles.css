@@ -423,6 +423,7 @@ nav ul li a:hover {
 
 .sleeve-options {
     margin: 1rem 0;
+    display: none;
 }
 
 .sleeve-options label {
