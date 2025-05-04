@@ -387,8 +387,16 @@ nav ul li a:hover {
     transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
+.product.out-of-stock {
+    opacity: 0.6;
+}
+
 .product:hover {
     transform: translateY(-10px);
+}
+
+.product.out-of-stock:hover {
+    transform: none;
 }
 
 .product img {
@@ -420,7 +428,7 @@ nav ul li a:hover {
 .sleeve-options label {
     font-size: 0.7rem;
     color: #555;
-    margin: 0.6rem;
+    margin: 0.5rem;
     display: block;
     font-family: 'Vazir', sans-serif;
 }
@@ -446,10 +454,14 @@ nav ul li a:hover {
 }
 
 .stock {
-    color: #4caf50;
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 1rem;
+}
+
+.stock.out-of-stock {
+    color: #b71c1c;
+    font-weight: 700;
 }
 
 .product-btn {
@@ -468,6 +480,18 @@ nav ul li a:hover {
 .product-btn:hover {
     transform: scale(1.12);
     box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+}
+
+.product-btn.disabled {
+    background: #888;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+.product-btn.disabled:hover {
+    transform: none;
+    box-shadow: none;
 }
 
 /* FAQ Section */
