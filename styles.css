@@ -6,57 +6,57 @@
 }
 
 :root {
-    --background-color: #f8f1e9;
-    --text-color: #333;
-    --header-bg: linear-gradient(90deg, #ff6f61, #ff8a80); 
-    --header-scrolled-bg: linear-gradient(90deg, #40c4ff, #0288d1); 
+    --background-color: #fefefe;
+    --text-color: #1a1a1a;
+    --header-bg: linear-gradient(90deg, #ff7e5f, #feb47b);
+    --header-scrolled-bg: linear-gradient(90deg, #4db6ac, #26a69a);
     --card-bg: #ffffff;
     --modal-bg: #ffffff;
-    --modal-text: #333;
-    --button-bg: linear-gradient(90deg, #7b1fa2, #0288d1);
-    --button-hover-shadow: rgba(123, 31, 162, 0.9);
-    --filter-btn-bg: #e0e0e0;
-    --filter-btn-active-bg: linear-gradient(90deg, #ff6f61, #ff8a80);
-    --price-color: #d32f2f; 
+    --modal-text: #1a1a1a;
+    --button-bg: linear-gradient(90deg, #ab47bc, #8e24aa);
+    --button-hover-shadow: rgba(171, 71, 188, 0.9);
+    --filter-btn-bg: #e8e8e8;
+    --filter-btn-active-bg: linear-gradient(90deg, #ff7e5f, #feb47b);
+    --price-color: #e91e63;
     --stock-color: #2e7d32;
-    --stock-out-color: #c62828;
-    --footer-bg: linear-gradient(90deg, #26a69a, #4db6ac);
+    --stock-out-color: #d81b60;
+    --footer-bg: linear-gradient(90deg, #4fc3f7, #0288d1);
     --footer-text: #fff;
-    --telegram-bg: linear-gradient(90deg, #26c6da, #00acc1); 
-    --telegram-shadow: rgba(38, 198, 218, 0.7);
-    --cart-count-bg: #ffb300; 
-    --cart-count-text: #333;
-    --section-bg: linear-gradient(180deg, #ffd54f, #ffb300); 
-    --faq-item-text: #333;
-    --theme-toggle-bg: linear-gradient(90deg, #ff6f61, #ff8a80); 
-    --theme-toggle-hover-shadow: rgba(255, 111, 97, 0.9);
+    --telegram-bg: linear-gradient(90deg, #29b6f6, #0288d1);
+    --telegram-shadow: rgba(41, 182, 246, 0.7);
+    --cart-count-bg: #ffca28;
+    --cart-count-text: #1a1a1a;
+    --section-bg: linear-gradient(180deg, #fff176, #ffca28);
+    --faq-item-text: #1a1a1a;
+    --theme-toggle-bg: linear-gradient(90deg, #ff7e5f, #feb47b);
+    --theme-toggle-hover-shadow: rgba(255, 126, 95, 0.9);
 }
 
 body.dark-mode {
-    --background-color: #121212;
-    --text-color: #fff;
-    --header-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --header-scrolled-bg: linear-gradient(90deg, #1a237e, #3f51b5);
-    --card-bg: #fff;
-    --modal-bg: #fff;
-    --modal-text: #121212;
-    --button-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --button-hover-shadow: rgba(211, 47, 47, 0.9);
-    --filter-btn-bg: #fff;
-    --filter-btn-active-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --price-color: #d32f2f;
+    --background-color: #1c2526;
+    --text-color: #e0e0e0;
+    --header-bg: linear-gradient(90deg, #b71c1c, #880e4f);
+    --header-scrolled-bg: linear-gradient(90deg, #311b92, #5e35b1);
+    --card-bg: #2e2e2e;
+    --modal-bg: #2e2e2e;
+    --modal-text: #e0e0e0;
+    --button-bg: linear-gradient(90deg, #b71c1c, #880e4f);
+    --button-hover-shadow: rgba(183, 28, 28, 0.9);
+    --filter-btn-bg: #424242;
+    --filter-btn-active-bg: linear-gradient(90deg, #b71c1c, #880e4f);
+    --price-color: #f06292;
     --stock-color: #4caf50;
-    --stock-out-color: #b71c1c;
-    --footer-bg: linear-gradient(90deg, #1a237e, #263238);
-    --footer-text: #fff;
-    --telegram-bg: linear-gradient(90deg, #0088cc, #00a8e8);
-    --telegram-shadow: rgba(0, 136, 204, 0.7);
+    --stock-out-color: #ef5350;
+    --footer-bg: linear-gradient(90deg, #311b92, #4527a0);
+    --footer-text: #e0e0e0;
+    --telegram-bg: linear-gradient(90deg, #0288d1, #0277bd);
+    --telegram-shadow: rgba(2, 136, 209, 0.7);
     --cart-count-bg: #ffca28;
-    --cart-count-text: #121212;
-    --section-bg: linear-gradient(180deg, #263238, #37474f);
-    --faq-item-text: #121212;
-    --theme-toggle-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --theme-toggle-hover-shadow: rgba(211, 47, 47, 0.9);
+    --cart-count-text: #1c2526;
+    --section-bg: linear-gradient(180deg, #37474f, #263238);
+    --faq-item-text: #e0e0e0;
+    --theme-toggle-bg: linear-gradient(90deg, #b71c1c, #880e4f);
+    --theme-toggle-hover-shadow: rgba(183, 28, 28, 0.9);
 }
 
 :root {
@@ -79,7 +79,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Theme Toggle Button */
 .theme-toggle {
     background: var(--theme-toggle-bg);
     border: none;
@@ -139,7 +138,6 @@ body.dark-mode .theme-toggle i.fa-moon {
     display: inline;
 }
 
-/* Header */
 header {
     background: var(--header-bg);
     padding: 1.5rem 2rem;
@@ -221,7 +219,6 @@ nav ul li a:hover {
     font-weight: 700;
 }
 
-/* Cart Modal */
 .cart-modal {
     display: none;
     position: fixed;
@@ -245,7 +242,6 @@ nav ul li a:hover {
     color: var(--modal-text);
 }
 
-/* Favorites Modal */
 .favorites-modal {
     display: none;
     position: fixed;
@@ -327,7 +323,6 @@ nav ul li a:hover {
     box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
-/* Favorite Button */
 .favorite-btn {
     background: none;
     border: none;
@@ -349,7 +344,6 @@ nav ul li a:hover {
     transform: scale(1.2);
 }
 
-/* Telegram Button */
 .telegram-btn {
     position: fixed;
     bottom: 2rem;
@@ -376,7 +370,6 @@ nav ul li a:hover {
     box-shadow: 0 6px 20px var(--telegram-shadow);
 }
 
-/* Hero Section */
 .hero {
     background: var(--section-bg);
     text-align: center;
@@ -433,10 +426,9 @@ nav ul li a:hover {
     box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
-/* Shop Section */
 .shop {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, #66bb6a, #388e3c); /* سبز برای تنوع */
+    background: linear-gradient(180deg, #4fc3f7, #0288d1);
     text-align: center;
     max-width: 100vw;
     overflow-x: hidden;
@@ -537,7 +529,7 @@ nav ul li a:hover {
 
 .product p {
     font-size: 1.1rem;
-    color: #444; 
+    color: #333;
     margin-bottom: 1rem;
     font-family: 'Vazir', sans-serif;
 }
@@ -549,7 +541,7 @@ nav ul li a:hover {
 
 .sleeve-options label {
     font-size: 0.7rem;
-    color: #444;
+    color: #333;
     margin: 0.5rem;
     display: block;
     font-family: 'Vazir', sans-serif;
@@ -617,10 +609,9 @@ nav ul li a:hover {
     box-shadow: none;
 }
 
-/* FAQ Section */
 .faq {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, #ab47bc, #7b1fa2); 
+    background: linear-gradient(180deg, #ff8a80, #f06292);
     text-align: center;
     max-width: 100vw;
     overflow-x: hidden;
@@ -700,14 +691,13 @@ nav ul li a:hover {
 
 .faq-item p {
     font-size: 1.1rem;
-    color: #444;
+    color: #333;
     font-family: 'Vazir', sans-serif;
 }
 
-/* Contact Section */
 .contact {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, #ff8a80, #ff6f61); 
+    background: linear-gradient(180deg, #4db6ac, #26a69a);
     text-align: center;
     max-width: 100vw;
     overflow-x: hidden;
@@ -769,7 +759,6 @@ nav ul li a:hover {
     box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
-/* Footer */
 footer {
     background: var(--footer-bg);
     color: var(--footer-text);
@@ -779,7 +768,6 @@ footer {
     font-family: 'Vazir', sans-serif;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .hero {
         padding: 5rem 1rem;
