@@ -158,7 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const size = document.querySelector('input[name="size"]:checked').value;
         const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
         const price = products[kit].sleevePrices[sleeve] * 0.85;
-        addToCart(products[kit].title, size, sleeve, price);
+        window.addToCart(products[kit].title, size, sleeve, price); // Call global addToCart
         updateCart();
     };
 
