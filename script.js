@@ -104,6 +104,86 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Favorite Functionality
+    const favoriteButtons = document.querySelectorAll('.favorite-btn');
+    const productsData = {
+        'barca': {
+            kit: 'barca',
+            title: 'کیت بارسلونا',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/barca.jpg',
+            discountedPrice: 765000
+        },
+        'real': {
+            kit: 'real',
+            title: 'کیت رئال مادرید',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/real.jpg',
+            discountedPrice: 765000
+        },
+        'esteghlal': {
+            kit: 'esteghlal',
+            title: 'کیت استقلال',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/es.jpeg',
+            discountedPrice: 680000
+        },
+        'perspolis': {
+            kit: 'perspolis',
+            title: 'کیت پرسپولیس',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpeg',
+            discountedPrice: 680000
+        },
+        'chelsea': {
+            kit: 'chelsea',
+            title: 'کیت چلسی',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jpg',
+            discountedPrice: 765000
+        },
+        'man-utd': {
+            kit: 'man-utd',
+            title: 'کیت منچستر یونایتد',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/MUN.jpg',
+            discountedPrice: 765000
+        },
+        'ACM': {
+            kit: 'ACM',
+            title: 'کیت آث میلان',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ACM.jpg',
+            discountedPrice: 765000
+        },
+        'classic-inter-milan': {
+            kit: 'classic-inter-milan',
+            title: 'کیت اینتر میلان',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ClassicInter.webp',
+            discountedPrice: 800000
+        }
+    };
+
+    function toggleFavorite(kit) {
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        const favoriteBtn = document.querySelector(`.favorite-btn[data-kit="${kit}"]`);
+        const isFavorited = favorites.some(item => item.kit === kit);
+
+        if (isFavorited) {
+            favorites = favorites.filter(item => item.kit !== kit);
+            favoriteBtn.classList.remove('active');
+            alert('محصول از علاقه‌مندی‌ها حذف شد!');
+        } else {
+            favorites.push(productsData[kit]);
+            favoriteBtn.classList.add('active');
+            alert('محصول به علاقه‌مندی‌ها اضافه شد!');
+        }
+
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+
+    favoriteButtons.forEach(button => {
+        const kit = button.getAttribute('data-kit');
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (favorites.some(item => item.kit === kit)) {
+            button.classList.add('active');
+        }
+        button.addEventListener('click', () => toggleFavorite(kit));
+    });
+
     // Scroll Animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -121,8 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 });
 
-// Expose addToCart for product.js
-function addToCart(title, size, sleeve, price) {
+// Expose addToCart and toggleFavorite globally
+window.addToCart = function(title, size, sleeve, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ title, size, sleeve, price });
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -131,4 +211,6 @@ function addToCart(title, size, sleeve, price) {
         cartCount.textContent = cart.length;
     }
     alert('محصول به سبد خرید اضافه شد!');
-}
+};
+
+window.toggleFavorite = toggleFavorite;
