@@ -41,34 +41,41 @@
     </div>
 
     <!-- Product Section -->
-    <section class="product-container">
-        <div class="product-image">
-            <img id="product-img" src="" alt="کیت">
-        </div>
-        <div class="product-details">
-            <h1 id="product-title"></h1>
-            <p id="product-description"></p>
-            <p class="price">
-                <span id="original-price"></span>
-                <span id="discounted-price"></span>
-            </p>
-            <p class="stock">موجود</p>
-            <div class="size-options">
-                <h3>سایز:</h3>
-                <label><input type="radio" name="size" value="S"> S</label>
-                <label><input type="radio" name="size" value="M" checked> M</label>
-                <label><input type="radio" name="size" value="L"> L</label>
-                <label><input type="radio" name="size" value="XL"> XL</label>
+    <section class="product-detail">
+        <div class="product-container">
+            <div class="product-image">
+                <img id="product-img" src="" alt="کیت">
             </div>
-            <div class="sleeve-options">
-                <h3>نوع آستین:</h3>
-                <label><input type="radio" name="sleeve" value="long" checked> آستین‌دار</label>
-                <label><input type="radio" name="sleeve" value="short"> بدون آستین</label>
+            <div class="product-info">
+                <h1 id="product-title"></h1>
+                <p id="product-description"></p>
+                <div class="size-options">
+                    <h3>انتخاب سایز:</h3>
+                    <label><input type="radio" name="size" value="S" checked> S</label>
+                    <label><input type="radio" name="size" value="M"> M</label>
+                    <label><input type="radio" name="size" value="L"> L</label>
+                    <label><input type="radio" name="size" value="XL"> XL</label>
+                </div>
+                <div class="sleeve-options">
+                    <h3>نوع آستین:</h3>
+                    <label><input type="radio" name="sleeve" value="long" checked> آستین‌دار</label>
+                    <label><input type="radio" name="sleeve" value="short"> بدون آستین</label>
+                </div>
+                <div class="price">
+                    <span id="original-price"></span>
+                    <span id="discounted-price"></span>
+                </div>
+                <p class="stock">موجود</p>
+                <button onclick="addToCart()">افزودن به سبد خرید</button>
+                <button id="favorite-btn" onclick="toggleFavorite()">افزودن به علاقه‌مندی‌ها</button>
             </div>
-            <button id="favorite-btn" onclick="toggleFavorite()">افزودن به علاقه‌مندی‌ها</button>
-            <button onclick="addToCart()">افزودن به سبد خرید</button>
         </div>
     </section>
+
+    <!-- Telegram Button -->
+    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
 
     <!-- Footer -->
     <footer>
@@ -76,11 +83,6 @@
         <p>تمامی حقوق محفوظ است © 1404</p>
         <p>ایمیل: naeemikorosh37@gmail.com | تلگرام: 09966897203</p>
     </footer>
-
-    <!-- Telegram Button -->
-    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-    </a>
 
     <script src="product.js"></script>
 </body>
