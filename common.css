@@ -1,0 +1,48 @@
+
+.favorite-btn {
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.favorite-btn:hover {
+    transform: scale(1.2);
+    background-color: #ffe6e6;
+}
+
+.favorite-btn.favorited {
+    background-color: #ff4d4d;
+    color: #fff;
+}
+
+button, .product-btn, .clear-cart, .clear-favorites {
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover, .product-btn:hover, .clear-cart:hover, .clear-favorites:hover {
+    transform: scale(1.05);
+    background-color: #0056b3; 
+}
+
+.filter-btn {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.filter-btn:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.filter-btn.active {
+    background-color: #0056b3;
+    color: #fff;
+}
+.cart-modal, .favorites-modal {
+    transition: opacity 0.3s ease;
+}
+
+.cart-modal[style*="display: flex"], .favorites-modal[style*="display: flex"] {
+    opacity: 1;
+}
+
+.cart-modal, .favorites-modal {
+    opacity: 0;
+}
