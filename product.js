@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const clearCartBtn = document.getElementById('clear-cart');
+    const cartCount = document.getElementById('cart-count');
 
     function updateCart() {
         console.log('Updating cart display'); // Debug
@@ -29,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price;
         });
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
+        // Update cart count
+        if (cartCount) {
+            cartCount.textContent = cart.length;
+        }
     }
 
     if (cartBtn) {
@@ -175,8 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
             price: price
         });
         localStorage.setItem('cart', JSON.stringify(cart));
+        // Update cart count
+        if (cartCount) {
+            cartCount.textContent = cart.length;
+        }
         alert('محصول به سبد خرید اضافه شد!');
-        // Do not call updateCart here to avoid recursion
     };
 
     // Toggle Favorite
@@ -217,4 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.2 });
 
     observer.observe(productContainer);
+
+    // Initialize cart count
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cartCount) {
+        cartCount.textContent = cart.length;
+    }
 });
