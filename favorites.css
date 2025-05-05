@@ -5,6 +5,45 @@
     font-style: normal;
 }
 
+:root {
+    --background-color: #f5f5f5;
+    --text-color: #333;
+    --header-bg: linear-gradient(90deg, #007bff, #0056b3);
+    --header-scrolled-bg: linear-gradient(90deg, #4caf50, #388e3c);
+    --card-bg: #fff;
+    --modal-bg: #fff;
+    --modal-text: #333;
+    --button-bg: linear-gradient(90deg, #007bff, #0056b3);
+    --button-hover-shadow: rgba(0, 123, 255, 0.9);
+    --price-color: #e60000;
+    --footer-bg: linear-gradient(90deg, #4caf50, #388e3c);
+    --footer-text: #fff;
+    --telegram-bg: linear-gradient(90deg, #0088cc, #00a8e8);
+    --telegram-shadow: rgba(0, 136, 204, 0.7);
+    --cart-count-bg: #ffca28;
+    --cart-count-text: #333;
+    --section-bg: linear-gradient(180deg, #007bff, #0056b3);
+}
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #fff;
+    --header-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
+    --header-scrolled-bg: linear-gradient(90deg, #1a237e, #3f51b5);
+    --card-bg: #fff;
+    --modal-bg: #fff;
+    --modal-text: #121212;
+    --button-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
+    --button-hover-shadow: rgba(211, 47, 47, 0.9);
+    --price-color: #d32f2f;
+    --footer-bg: linear-gradient(90deg, #1a237e, #263238);
+    --footer-text: #fff;
+    --telegram-bg: linear-gradient(90deg, #0088cc, #00a8e8);
+    --telegram-shadow: rgba(0, 136, 204, 0.7);
+    --cart-count-bg: #ffca28;
+    --cart-count-text: #121212;
+    --section-bg: linear-gradient(180deg, #263238, #37474f);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,15 +53,15 @@
 }
 
 body {
-    background: #121212;
-    color: #fff;
+    background: var(--background-color);
+    color: var(--text-color);
     line-height: 1.6;
     overflow-x: hidden;
 }
 
 /* Header */
 header {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    background: var(--header-bg);
     padding: 1.5rem 2rem;
     display: flex;
     justify-content: space-between;
@@ -35,7 +74,7 @@ header {
 }
 
 header.scrolled {
-    background: linear-gradient(90deg, #1a237e, #3f51b5);
+    background: var(--header-scrolled-bg);
 }
 
 .logo {
@@ -55,7 +94,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: #fff;
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 600;
     position: relative;
@@ -68,7 +107,7 @@ nav ul li a::after {
     position: absolute;
     width: 0;
     height: 3px;
-    background: #ffca28;
+    background: var(--cart-count-bg);
     bottom: -6px;
     left: 0;
     transition: width 0.3s ease;
@@ -79,7 +118,7 @@ nav ul li a:hover::after {
 }
 
 nav ul li a:hover {
-    color: #ffca28;
+    color: var(--cart-count-bg);
 }
 
 .cart-btn {
@@ -94,8 +133,8 @@ nav ul li a:hover {
 }
 
 .cart-count {
-    background: #ffca28;
-    color: #121212;
+    background: var(--cart-count-bg);
+    color: var(--cart-count-text);
     border-radius: 50%;
     padding: 0.2rem 0.5rem;
     font-size: 0.9rem;
@@ -117,13 +156,13 @@ nav ul li a:hover {
 }
 
 .cart-content {
-    background: #fff;
+    background: var(--modal-bg);
     padding: 2rem;
     border-radius: 15px;
     max-width: 600px;
     width: 90%;
     position: relative;
-    color: #121212;
+    color: var(--modal-text);
 }
 
 .close {
@@ -166,7 +205,7 @@ nav ul li a:hover {
 }
 
 .clear-cart {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    background: var(--button-bg);
     color: #fff;
     border: none;
     padding: 0.8rem 2rem;
@@ -174,20 +213,20 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    box-shadow: 0 0 20px var(--button-hover-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Digikala', sans-serif;
 }
 
 .clear-cart:hover {
     transform: scale(1.12);
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+    box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
 /* Favorites Section */
 .favorites {
     padding: 5rem 2rem;
-    background: linear-gradient(180deg, #263238, #37474f);
+    background: var(--section-bg);
     text-align: center;
 }
 
@@ -206,14 +245,14 @@ nav ul li a:hover {
 }
 
 .favorite-item {
-    background: #fff;
+    background: var(--card-bg);
     border-radius: 15px;
     padding: 1.5rem;
     width: 300px;
     text-align: center;
     box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease;
-    color: #121212;
+    color: var(--modal-text);
     opacity: 0;
     transform: scale(0.8);
 }
@@ -239,7 +278,7 @@ nav ul li a:hover {
 .favorite-item h3 {
     font-size: 1.8rem;
     margin-bottom: 0.8rem;
-    color: #d32f2f;
+    color: var(--price-color);
     font-family: 'Digikala', sans-serif;
 }
 
@@ -252,13 +291,13 @@ nav ul li a:hover {
 
 .favorite-item .price {
     font-size: 1rem;
-    color: #d32f2f;
+    color: var(--price-color);
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .favorite-item .remove-btn {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    background: var(--button-bg);
     color: #fff;
     border: none;
     padding: 0.8rem 2rem;
@@ -266,18 +305,18 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    box-shadow: 0 0 20px var(--button-hover-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Digikala', sans-serif;
 }
 
 .favorite-item .remove-btn:hover {
     transform: scale(1.12);
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+    box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
 .clear-favorites {
-    background: linear-gradient(90deg, #d32f2f, #b71c1c);
+    background: var(--button-bg);
     color: #fff;
     border: none;
     padding: 1rem 3rem;
@@ -285,7 +324,7 @@ nav ul li a:hover {
     cursor: pointer;
     font-weight: 700;
     text-transform: uppercase;
-    box-shadow: 0 0 20px rgba(211, 47, 47, 0.6);
+    box-shadow: 0 0 20px var(--button-hover-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Digikala', sans-serif;
     margin-top: 2rem;
@@ -293,7 +332,7 @@ nav ul li a:hover {
 
 .clear-favorites:hover {
     transform: scale(1.12);
-    box-shadow: 0 0 30px rgba(211, 47, 47, 0.9);
+    box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
 /* Telegram Button */
@@ -301,14 +340,14 @@ nav ul li a:hover {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: linear-gradient(90deg, #0088cc, #00a8e8);
+    background: var(--telegram-bg);
     border-radius: 50%;
     width: 60px;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.5);
+    box-shadow: 0 4px 15px var(--telegram-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     z-index: 1000;
 }
@@ -320,13 +359,13 @@ nav ul li a:hover {
 
 .telegram-btn:hover {
     transform: scale(1.2);
-    box-shadow: 0 6px 20px rgba(0, 136, 204, 0.7);
+    box-shadow: 0 6px 20px var(--telegram-shadow);
 }
 
 /* Footer */
 footer {
-    background: linear-gradient(90deg, #1a237e, #263238);
-    color: #fff;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     text-align: center;
     padding: 2.5rem;
     font-size: 1rem;
