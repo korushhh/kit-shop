@@ -6,53 +6,53 @@
 }
 
 :root {
-    --background-color: #f8f1e9;
-    --text-color: #333;
-    --header-bg: linear-gradient(90deg, #ff6f61, #ff8a80);
-    --header-scrolled-bg: linear-gradient(90deg, #40c4ff, #0288d1);
+    --background-color: #f5f5f5;
+    --text-color: #212121;
+    --header-bg: #0288d1;
+    --header-scrolled-bg: #0277bd;
     --card-bg: #ffffff;
     --modal-bg: #ffffff;
-    --modal-text: #333;
-    --button-bg: linear-gradient(90deg, #7b1fa2, #0288d1);
-    --button-hover-shadow: rgba(123, 31, 162, 0.9);
-    --price-color: #d32f2f;
-    --stock-color: #2e7d32;
-    --footer-bg: linear-gradient(90deg, #26a69a, #4db6ac);
-    --footer-text: #fff;
-    --telegram-bg: linear-gradient(90deg, #26c6da, #00acc1);
-    --telegram-shadow: rgba(38, 198, 218, 0.7);
-    --cart-count-bg: #ffb300;
-    --cart-count-text: #333;
-    --section-bg: linear-gradient(180deg, #ffd54f, #ffb300);
-    --favorite-btn-bg: linear-gradient(90deg, #ffb300, #ff8f00);
-    --favorite-btn-hover-shadow: rgba(255, 143, 0, 0.9);
-    --theme-toggle-bg: linear-gradient(90deg, #ff6f61, #ff8a80);
-    --theme-toggle-hover-shadow: rgba(255, 111, 97, 0.9);
+    --modal-text: #212121;
+    --button-bg: #0288d1;
+    --button-hover-shadow: rgba(2, 136, 209, 0.7);
+    --price-color: #d81b60;
+    --stock-color: #388e3c;
+    --footer-bg: #0288d1;
+    --footer-text: #ffffff;
+    --telegram-bg: #0288d1;
+    --telegram-shadow: rgba(2, 136, 209, 0.7);
+    --cart-count-bg: #ffca28;
+    --cart-count-text: #212121;
+    --section-bg: #f5f5f5;
+    --favorite-btn-bg: #ffca28;
+    --favorite-btn-hover-shadow: rgba(255, 202, 40, 0.7);
+    --theme-toggle-bg: #0288d1;
+    --theme-toggle-hover-shadow: rgba(2, 136, 209, 0.7);
 }
 
 body.dark-mode {
-    --background-color: #121212;
-    --text-color: #fff;
-    --header-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --header-scrolled-bg: linear-gradient(90deg, #1a237e, #3f51b5);
-    --card-bg: #fff;
-    --modal-bg: #fff;
-    --modal-text: #121212;
-    --button-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --button-hover-shadow: rgba(211, 47, 47, 0.9);
-    --price-color: #d32f2f;
+    --background-color: #0d1117;
+    --text-color: #e0e0e0;
+    --header-bg: #1e2529;
+    --header-scrolled-bg: #161b22;
+    --card-bg: #161b22;
+    --modal-bg: #161b22;
+    --modal-text: #e0e0e0;
+    --button-bg: #1e2529;
+    --button-hover-shadow: rgba(30, 37, 41, 0.7);
+    --price-color: #f06292;
     --stock-color: #4caf50;
-    --footer-bg: linear-gradient(90deg, #1a237e, #263238);
-    --footer-text: #fff;
-    --telegram-bg: linear-gradient(90deg, #0088cc, #00a8e8);
-    --telegram-shadow: rgba(0, 136, 204, 0.7);
+    --footer-bg: #1e2529;
+    --footer-text: #e0e0e0;
+    --telegram-bg: #1e2529;
+    --telegram-shadow: rgba(30, 37, 41, 0.7);
     --cart-count-bg: #ffca28;
-    --cart-count-text: #121212;
-    --section-bg: linear-gradient(180deg, #1a237e, #263238);
-    --favorite-btn-bg: linear-gradient(90deg, #ffca28, #ffb300);
-    --favorite-btn-hover-shadow: rgba(255, 202, 40, 0.9);
-    --theme-toggle-bg: linear-gradient(90deg, #d32f2f, #b71c1c);
-    --theme-toggle-hover-shadow: rgba(211, 47, 47, 0.9);
+    --cart-count-text: #0d1117;
+    --section-bg: #0d1117;
+    --favorite-btn-bg: #ffca28;
+    --favorite-btn-hover-shadow: rgba(255, 202, 40, 0.7);
+    --theme-toggle-bg: #1e2529;
+    --theme-toggle-hover-shadow: rgba(30, 37, 41, 0.7);
 }
 
 * {
@@ -70,7 +70,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Theme Toggle Button */
 .theme-toggle {
     background: var(--theme-toggle-bg);
     border: none;
@@ -130,7 +129,6 @@ body.dark-mode .theme-toggle i.fa-moon {
     display: inline;
 }
 
-/* Header */
 header {
     background: var(--header-bg);
     padding: 1.5rem 2rem;
@@ -212,7 +210,6 @@ nav ul li a:hover {
     font-weight: 700;
 }
 
-/* Cart Modal */
 .cart-modal {
     display: none;
     position: fixed;
@@ -294,7 +291,6 @@ nav ul li a:hover {
     box-shadow: 0 0 30px var(--button-hover-shadow);
 }
 
-/* Product Section */
 .product-detail {
     padding: 5rem 2rem;
     background: var(--section-bg);
@@ -349,7 +345,7 @@ nav ul li a:hover {
 .product-info p {
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
-    color: #444;
+    color: var(--modal-text);
     font-family: 'Vazir', sans-serif;
 }
 
@@ -365,7 +361,7 @@ nav ul li a:hover {
 
 .size-options label, .sleeve-options label {
     font-size: 1.1rem;
-    color: #444;
+    color: var(--modal-text);
     margin-left: 1.5rem;
     cursor: pointer;
     font-family: 'Vazir', sans-serif;
@@ -383,16 +379,15 @@ nav ul li a:hover {
 }
 
 .price .original-price {
-    text-decoration: line-through !important;
-    color: #888 !important;
-    font-size: 1.2rem !important;
-    font-weight: 400 !important;
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.2rem;
 }
 
 .price .discounted-price {
-    color: var(--price-color) !important;
-    font-weight: 700 !important;
-    font-size: 1.4rem !important;
+    color: var(--price-color);
+    font-weight: 700;
+    font-size: 1.4rem;
 }
 
 .stock {
@@ -451,7 +446,6 @@ nav ul li a:hover {
     box-shadow: 0 0 30px var(--favorite-btn-hover-shadow);
 }
 
-/* Telegram Button */
 .telegram-btn {
     position: fixed;
     bottom: 2rem;
@@ -478,7 +472,6 @@ nav ul li a:hover {
     box-shadow: 0 6px 20px var(--telegram-shadow);
 }
 
-/* Footer */
 footer {
     background: var(--footer-bg);
     color: var(--footer-text);
@@ -488,7 +481,6 @@ footer {
     font-family: 'Vazir', sans-serif;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .product-container {
         flex-direction: column;
