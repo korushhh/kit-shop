@@ -30,25 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
     }
 
-    if (cartBtn) {
-        cartBtn.addEventListener('click', () => {
-            cartModal.style.display = 'flex';
-            updateCart();
-        });
-    }
+    cartBtn.addEventListener('click', () => {
+        cartModal.style.display = 'flex';
+        updateCart();
+    });
 
-    if (closeCart) {
-        closeCart.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-    }
+    closeCart.addEventListener('click', () => {
+        cartModal.style.display = 'none';
+    });
 
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', () => {
-            localStorage.setItem('cart', JSON.stringify([]));
-            updateCart();
-        });
-    }
+    clearCartBtn.addEventListener('click', () => {
+        localStorage.setItem('cart', JSON.stringify([]));
+        updateCart();
+    });
 
     window.addEventListener('click', (e) => {
         if (e.target === cartModal) {
@@ -87,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'perspolis': {
             title: 'کیت پرسپولیس',
             description: 'لباس اصلی فصل 1404-1405',
-            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpeg',
+            image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpg',
             originalPrice: 800000,
             discountedPrice: 680000,
             sleevePrices: { long: 800000, short: 750000 }
@@ -108,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
             discountedPrice: 765000,
             sleevePrices: { long: 900000, short: 850000 }
         },
-        'ACM': {
+            'ACM': {
             title: 'کیت آث میلان',
             description: 'لباس خانگی فصل 2024-2025',
             image: 'https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ACM.jpg',
@@ -123,6 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
             originalPrice: 950000,
             discountedPrice: 800000,
             sleevePrices: { long: 950000, short: 900000 }
+
         }
     };
 
@@ -141,14 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.getElementById('discounted-price').textContent = `${(products[kit].sleevePrices[sleeve] * 0.85).toLocaleString()} تومان`;
             });
         });
-
-        // Favorite Button State
-        const favoriteBtn = document.getElementById('favorite-btn');
-        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        if (favorites.some(item => item.kit === kit)) {
-            favoriteBtn.textContent = 'حذف از علاقه‌مندی‌ها';
-            favoriteBtn.classList.add('favorited');
-        }
     } else {
         document.querySelector('.product-container').innerHTML = '<p>محصول یافت نشد!</p>';
     }
@@ -158,11 +145,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const size = document.querySelector('input[name="size"]:checked').value;
         const sleeve = document.querySelector('input[name="sleeve"]:checked').value;
         const price = products[kit].sleevePrices[sleeve] * 0.85;
-        window.addToCart(products[kit].title, size, sleeve, price); // Call global addToCart
-        updateCart();
+        addToCart(products[kit].title, size, sleeve, price);
     };
-
-    // Toggle Favorite
+    
     window.toggleFavorite = function() {
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const favoriteBtn = document.getElementById('favorite-btn');
