@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const clearCartBtn = document.getElementById('clear-cart');
 
     function updateCart() {
+        console.log('Updating cart display'); // Debug
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cartItems.innerHTML = '';
         let total = 0;
@@ -32,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cartBtn) {
         cartBtn.addEventListener('click', () => {
+            console.log('Cart button clicked'); // Debug
             cartModal.style.display = 'flex';
             updateCart();
         });
@@ -45,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', () => {
+            console.log('Clearing cart'); // Debug
             localStorage.setItem('cart', JSON.stringify([]));
             updateCart();
         });
@@ -172,17 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
             price: price
         });
         localStorage.setItem('cart', JSON.stringify(cart));
-        updateCart();
         alert('محصول به سبد خرید اضافه شد!');
+        // Do not call updateCart here to avoid recursion
     };
 
     // Toggle Favorite
     window.toggleFavorite = function() {
+        console.log(`Toggling favorite for kit: ${kit}`); // Debug
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const favoriteBtn = document.getElementById('favorite-btn');
         const isFavorited = favorites.some(item => item.kit === kit);
-
-        console.log(`Toggling favorite for kit: ${kit}, isFavorited: ${isFavorited}`); // Debug
 
         if (isFavorited) {
             favorites = favorites.filter(item => item.kit !== kit);
