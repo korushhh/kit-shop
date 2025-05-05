@@ -162,14 +162,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const favoriteBtn = document.querySelector(`.favorite-btn[data-kit="${kit}"]`);
         const isFavorited = favorites.some(item => item.kit === kit);
 
+        console.log(`Toggling favorite for kit: ${kit}, isFavorited: ${isFavorited}`); // Debug
+
         if (isFavorited) {
             favorites = favorites.filter(item => item.kit !== kit);
             favoriteBtn.classList.remove('active');
             alert('محصول از علاقه‌مندی‌ها حذف شد!');
         } else {
-            favorites.push(productsData[kit]);
-            favoriteBtn.classList.add('active');
-            alert('محصول به علاقه‌مندی‌ها اضافه شد!');
+            if (productsData[kit]) {
+                favorites.push(productsData[kit]);
+                favoriteBtn.classList.add('active');
+                alert('محصول به علاقه‌مندی‌ها اضافه شد!');
+            } else {
+                console.error(`Product data for kit ${kit} not found`);
+            }
         }
 
         localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -181,7 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (favorites.some(item => item.kit === kit)) {
             button.classList.add('active');
         }
-        button.addEventListener('click', () => toggleFavorite(kit));
+        button.addEventListener('click', () => {
+            console.log(`Favorite button clicked for kit: ${kit}`); // Debug
+            toggleFavorite(kit);
+        });
     });
 
     // Scroll Animations
@@ -201,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartCount();
 });
 
-// Expose addToCart and toggleFavorite globally
+// Expose addToCart globally
 window.addToCart = function(title, size, sleeve, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ title, size, sleeve, price });
@@ -212,5 +221,3 @@ window.addToCart = function(title, size, sleeve, price) {
     }
     alert('محصول به سبد خرید اضافه شد!');
 };
-
-window.toggleFavorite = toggleFavorite;
