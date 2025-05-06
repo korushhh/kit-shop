@@ -351,20 +351,28 @@ nav ul li a:hover {
 
 .size-options, .sleeve-options {
     margin: 1.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-end;
 }
 
 .size-options h3, .sleeve-options h3 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
     font-family: 'Digikala', sans-serif;
+    width: 100%;
+    text-align: right;
 }
 
 .size-options label, .sleeve-options label {
     font-size: 1.1rem;
     color: var(--modal-text);
-    margin-left: 1.5rem;
     cursor: pointer;
     font-family: 'Vazir', sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .size-options input, .sleeve-options input {
@@ -376,12 +384,14 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 1.2rem;
+    justify-content: flex-end;
 }
 
 .price .original-price {
     text-decoration: line-through;
     color: #888;
     font-size: 1.2rem;
+    font-weight: 400;
 }
 
 .price .discounted-price {
