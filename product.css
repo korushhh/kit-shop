@@ -333,10 +333,6 @@ nav ul li a:hover {
     text-align: right;
     color: var(--modal-text);
     flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    padding-right: 1rem;
 }
 
 .product-info h1 {
@@ -356,18 +352,17 @@ nav ul li a:hover {
 .size-options, .sleeve-options {
     margin: 1.5rem 0;
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: flex-end;
-    width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: flex-end;
 }
 
 .size-options h3, .sleeve-options h3 {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
     font-family: 'Digikala', sans-serif;
-    text-align: right;
     width: 100%;
+    text-align: right;
 }
 
 .size-options label, .sleeve-options label {
@@ -378,7 +373,6 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    justify-content: flex-end;
 }
 
 .size-options input, .sleeve-options input {
@@ -390,21 +384,20 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    justify-content: flex-end !important;
-    width: 100%;
+    justify-content: flex-end;
 }
 
 .price #original-price, .price .original-price {
     text-decoration: line-through !important;
     color: #888 !important;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
 }
 
 .price #discounted-price, .price .discounted-price {
     color: var(--price-color);
     font-weight: 700;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 
 .stock {
@@ -412,8 +405,6 @@ nav ul li a:hover {
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    width: 100%;
-    text-align: right;
 }
 
 .product-info button {
