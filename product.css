@@ -354,7 +354,7 @@ nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .size-options h3, .sleeve-options h3 {
@@ -370,7 +370,7 @@ nav ul li a:hover {
     color: var(--modal-text);
     cursor: pointer;
     font-family: 'Vazir', sans-serif;
-    display: flex;
+    display: flex-start;
     align-items: center;
     gap: 0.5rem;
 }
@@ -384,7 +384,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 
 .price #original-price, .price .original-price {
