@@ -352,9 +352,9 @@ nav ul li a:hover {
 .size-options, .sleeve-options {
     margin: 1.5rem 0;
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-end;
 }
 
 .size-options h3, .sleeve-options h3 {
@@ -373,6 +373,8 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-end;
 }
 
 .size-options input, .sleeve-options input {
@@ -388,8 +390,8 @@ nav ul li a:hover {
 }
 
 .price .original-price {
-    text-decoration: line-through;
-    color: #888;
+    text-decoration: line-through !important;
+    color: #888 !important;
     font-size: 1.2rem;
     font-weight: 400;
 }
