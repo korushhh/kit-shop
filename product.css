@@ -333,6 +333,10 @@ nav ul li a:hover {
     text-align: right;
     color: var(--modal-text);
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 1rem;
 }
 
 .product-info h1 {
@@ -352,11 +356,10 @@ nav ul li a:hover {
 .size-options, .sleeve-options {
     margin: 1.5rem 0;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 1rem;
-    justify-content: flex-end;
-    padding: 0 1rem;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: flex-end;
+    width: 100%;
 }
 
 .size-options h3, .sleeve-options h3 {
@@ -388,6 +391,7 @@ nav ul li a:hover {
     align-items: center;
     gap: 1.2rem;
     justify-content: flex-end !important;
+    width: 100%;
 }
 
 .price #original-price, .price .original-price {
@@ -408,6 +412,8 @@ nav ul li a:hover {
     font-weight: 600;
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    width: 100%;
+    text-align: right;
 }
 
 .product-info button {
@@ -527,10 +533,6 @@ footer {
     .theme-toggle i {
         font-size: 1rem;
     }
-
-    .size-options, .sleeve-options {
-        flex-wrap: wrap;
-    }
 }
 
 @media (max-width: 480px) {
@@ -558,10 +560,5 @@ footer {
 
     .theme-toggle i {
         font-size: 0.9rem;
-    }
-
-    .size-options, .sleeve-options {
-        flex-direction: column;
-        align-items: flex-end;
     }
 }
