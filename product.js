@@ -1,11 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Cart Functionality
     const cartModal = document.getElementById('cart-modal');
     const cartBtn = document.getElementById('cart-btn');
     const closeCart = document.getElementById('close-cart');
@@ -15,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCount = document.getElementById('cart-count');
 
     function updateCart() {
-        console.log('Updating cart display'); // Debug
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
         cartItems.innerHTML = '';
         let total = 0;
@@ -30,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
             total += item.price;
         });
         cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
-        // Update cart count
         if (cartCount) {
             cartCount.textContent = cart.length;
         }
@@ -38,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (cartBtn) {
         cartBtn.addEventListener('click', () => {
-            console.log('Cart button clicked'); // Debug
             cartModal.style.display = 'flex';
             updateCart();
         });
@@ -52,7 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (clearCartBtn) {
         clearCartBtn.addEventListener('click', () => {
-            console.log('Clearing cart'); // Debug
             localStorage.setItem('cart', JSON.stringify([]));
             updateCart();
         });
@@ -64,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Product Details
     const urlParams = new URLSearchParams(window.location.search);
     const kit = urlParams.get('kit');
     const products = {
@@ -138,19 +131,24 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('product-title').textContent = products[kit].title;
         document.getElementById('product-description').textContent = products[kit].description;
         document.getElementById('product-img').src = products[kit].image;
-        document.getElementById('original-price').textContent = `${products[kit].originalPrice.toLocaleString()} تومان`;
-        document.getElementById('discounted-price').textContent = `${products[kit].discountedPrice.toLocaleString()} تومان`;
+        const originalPriceSpan = document.getElementById('original-price');
+        const discountedPriceSpan = document.getElementById('discounted-price');
+        originalPriceSpan.textContent = `${products[kit].originalPrice.toLocaleString()} تومان`;
+        originalPriceSpan.classList.add('original-price');
+        discountedPriceSpan.textContent = `${products[kit].discountedPrice.toLocaleString()} تومان`;
+        discountedPriceSpan.classList.add('discounted-price');
 
         const sleeveOptions = document.querySelectorAll('input[name="sleeve"]');
         sleeveOptions.forEach(option => {
             option.addEventListener('change', () => {
                 const sleeve = option.value;
-                document.getElementById('original-price').textContent = `${products[kit].sleevePrices[sleeve].toLocaleString()} تومان`;
-                document.getElementById('discounted-price').textContent = `${(products[kit].sleevePrices[sleeve] * 0.85).toLocaleString()} تومان`;
+                originalPriceSpan.textContent = `${products[kit].sleevePrices[sleeve].toLocaleString()} تومان`;
+                discountedPriceSpan.textContent = `${(products[kit].sleevePrices[sleeve] * 0.85).toLocaleString()} تومان`;
+                originalPriceSpan.classList.add('original-price');
+                discountedPriceSpan.classList.add('discounted-price');
             });
         });
 
-        // Favorite Button State
         const favoriteBtn = document.getElementById('favorite-btn');
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         if (favorites.some(item => item.kit === kit)) {
@@ -161,13 +159,10 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.product-container').innerHTML = '<p>محصول یافت نشد!</p>';
     }
 
-    // Add to Cart
     window.addToCart = function() {
-        console.log(`Adding to cart for kit: ${kit}`); // Debug
         const size = document.querySelector('input[name="size"]:checked');
         const sleeve = document.querySelector('input[name="sleeve"]:checked');
         if (!size || !sleeve || !products[kit]) {
-            console.error('Invalid size, sleeve, or product data');
             alert('خطا: لطفاً سایز و نوع آستین را انتخاب کنید.');
             return;
         }
@@ -180,16 +175,13 @@ document.addEventListener('DOMContentLoaded', () => {
             price: price
         });
         localStorage.setItem('cart', JSON.stringify(cart));
-        // Update cart count
         if (cartCount) {
             cartCount.textContent = cart.length;
         }
         alert('محصول به سبد خرید اضافه شد!');
     };
 
-    // Toggle Favorite
     window.toggleFavorite = function() {
-        console.log(`Toggling favorite for kit: ${kit}`); // Debug
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         const favoriteBtn = document.getElementById('favorite-btn');
         const isFavorited = favorites.some(item => item.kit === kit);
@@ -214,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('favorites', JSON.stringify(favorites));
     };
 
-    // Scroll Animation for Product
     const productContainer = document.querySelector('.product-container');
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -226,7 +217,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(productContainer);
 
-    // Initialize cart count
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (cartCount) {
         cartCount.textContent = cart.length;
