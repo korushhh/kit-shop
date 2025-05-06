@@ -347,12 +347,11 @@ nav ul li a:hover {
     font-size: 1.1rem;
     color: var(--modal-text);
     margin-bottom: 1rem;
-    font-family: 'Vazir', sans-serif;
+    font-family: 'Digikala', sans-serif;
 }
 
 .favorite-item .price {
     font-size: 1rem;
-    color: var(--price-color);
     font-weight: 700;
     margin-bottom: 1rem;
 }
