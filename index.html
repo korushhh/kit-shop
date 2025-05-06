@@ -4,42 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>فروشگاه کیت هواداری کوروش</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
     <link href="https://v1.fontapi.ir/css/Vazir" rel="stylesheet">
     <link rel="stylesheet" href="common.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="logo">KitBaz</div>
-        <button class="hamburger">☰</button>
-        <nav class="nav">
+        <nav>
             <ul>
                 <li><a href="#home">خانه</a></li>
                 <li><a href="#shop">کیت‌ها</a></li>
                 <li><a href="#faq">سوالات متداول</a></li>
                 <li><a href="#contact">تماس</a></li>
                 <li><a href="favorites.html">علاقه‌مندی‌ها</a></li>
+                <li>
+                    <a href="#" id="cart-btn" class="cart-btn">
+                        <span class="cart-icon">🛒</span>
+                        <span id="cart-count" class="cart-count">0</span>
+                    </a>
+                </li>                
+                <li>
+                    <button id="theme-toggle" class="theme-toggle">🌙</button>
+                </li>
             </ul>
         </nav>
-        <nav class="mobile-nav">
-            <ul>
-                <li><a href="#home">خانه</a></li>
-                <li><a href="#shop">کیت‌ها</a></li>
-                <li><a href="#faq">سوالات متداول</a></li>
-                <li><a href="#contact">تماس</a></li>
-                <li><a href="favorites.html">علاقه‌مندی‌ها</a></li>
-            </ul>
-        </nav>
-        <div class="cart-section">
-            <a href="#" id="cart-btn" class="cart-btn">
-                <span class="cart-icon">🛒</span>
-                <span id="cart-count" class="cart-count">0</span>
-            </a>
-            <button id="theme-toggle" class="theme-toggle">🌙</button>
-        </div>
     </header>
 
+    <!-- Cart Modal -->
     <div id="cart-modal" class="cart-modal">
         <div class="cart-content">
             <span id="close-cart" class="close">×</span>
@@ -50,52 +44,214 @@
         </div>
     </div>
 
+    <!-- Favorites Modal -->
+    <div id="favorites-modal" class="favorites-modal">
+        <div class="favorites-content">
+            <span id="close-favorites" class="close">×</span>
+            <h2>علاقه‌مندی‌ها</h2>
+            <div id="favorites-items" class="favorites-items"></div>
+            <button id="clear-favorites" class="clear-favorites">خالی کردن علاقه‌مندی‌ها</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-content">
-            <h1>به فروشگاه کیت هواداری کوروش خوش آمدید</h1>
-            <p>بهترین کیت‌های هواداری با بالاترین کیفیت</p>
-            <a href="#shop" class="cta-btn">خرید کنید</a>
-        </div>
+        <h1>عشقت به تیم محبوبت رو نشون بده!</h1>
+        <p>کیت‌های هواداری با کیفیت بالا و تخفیف ویژه</p>
+        <a href="#shop" class="btn">خرید کن، هوادار!</a>
     </section>
 
-    <section id="shop" class="products">
+    <!-- Shop Section -->
+    <section id="shop" class="shop">
         <h2>کیت‌های هواداری</h2>
-        <div class="product-grid">
+        <div class="filter-bar">
+            <button class="filter-btn active" data-filter="all">همه</button>
+            <button class="filter-btn" data-filter="european">اروپایی</button>
+            <button class="filter-btn" data-filter="iranian">ایرانی</button>
+            <button class="filter-btn" data-filter="cheapest">ارزان‌ترین</button>
+        </div>
+        <div class="products">
+            <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="barca">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/barca.jpg" alt="کیت بارسلونا">
+                <h3>کیت بارسلونا</h3>
+                <p>لباس اصلی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-barca" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-barca" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=barca" class="product-btn">مشاهده و خرید</a>
+            </div>
+            <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="real">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/real.jpg" alt="کیت رئال مادرید">
+                <h3>کیت رئال مادرید</h3>
+                <p>لباس خانگی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-real" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-real" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=real" class="product-btn">مشاهده و خرید</a>
+            </div>
+            <div class="product" data-category="iranian" data-price="680000">
+                <button class="favorite-btn" data-kit="esteghlal">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/es.jpeg" alt="کیت استقلال">
+                <h3>کیت استقلال</h3>
+                <p>لباس خانگی فصل 1404-1405</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-esteghlal" value="long" checked> آستین‌دار (800,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-esteghlal" value="short"> بدون آستین (750,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">800,000 تومان</span>
+                    <span class="discounted-price">680,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=esteghlal" class="product-btn">مشاهده و خرید</a>
+            </div>
+            <div class="product" data-category="iranian" data-price="680000">
+                <button class="favorite-btn" data-kit="perspolis">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/pers.jpeg" alt="کیت پرسپولیس">
+                <h3>کیت پرسپولیس</h3>
+                <p>لباس اصلی فصل 1404-1405</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-perspolis" value="long" checked> آستین‌دار (800,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-perspolis" value="short"> بدون آستین (750,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">800,000 تومان</span>
+                    <span class="discounted-price">680,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=perspolis" class="product-btn">مشاهده و خرید</a>
+            </div>
+            <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="chelsea">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/chelsea.jpg" alt="کیت چلسی">
+                <h3>کیت چلسی</h3>
+                <p>لباس اصلی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-chelsea" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-chelsea" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=chelsea" class="product-btn">مشاهده و خرید</a>
+            </div>
+            <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="man-utd">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/MUN.jpg" alt="کیت منچستر یونایتد">
+                <h3>کیت منچستر یونایتد</h3>
+                <p>لباس خانگی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-man-utd" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-man-utd" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=man-utd" class="product-btn">مشاهده و خرید</a>
+            </div>           
+            <div class="product" data-category="european" data-price="765000">
+                <button class="favorite-btn" data-kit="ACM">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ACM.jpg" alt="کیت آث میلان">
+                <h3>کیت آث میلان</h3>
+                <p>لباس خانگی فصل 2024-2025</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-ACM" value="long" checked> آستین‌دار (900,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-ACM" value="short"> بدون آستین (850,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">900,000 تومان</span>
+                    <span class="discounted-price">765,000 تومان</span>
+                </p>
+                <p class="stock">موجود</p>
+                <a href="product.html?kit=ACM" class="product-btn">مشاهده و خرید</a>
+            </div>
+            <div class="product out-of-stock" data-category="european" data-price="800000">
+                <button class="favorite-btn" data-kit="classic-inter-milan">❤️</button>
+                <img class="zoom-container" src="https://raw.githubusercontent.com/korushhh/kit-shop/main/images/ClassicInter.webp" alt="کیت اینتر میلان">
+                <h3>کیت اینتر میلان</h3>
+                <p>لباس خانگی کلاسیک</p>
+                <div class="sleeve-options">
+                    <label><input type="radio" name="sleeve-classic-inter-milan" value="long" checked> آستین‌دار (950,000 تومان)</label>
+                    <label><input type="radio" name="sleeve-classic-inter-milan" value="short"> بدون آستین (900,000 تومان)</label>
+                </div>
+                <p class="price">
+                    <span class="original-price">950,000 تومان</span>
+                    <span class="discounted-price">800,000 تومان</span>
+                </p>
+                <p class="stock out-of-stock">ناموجود</p>
+                <a class="product-btn disabled">مشاهده و خرید</a>
+            </div>
         </div>
     </section>
 
+    <!-- FAQ Section -->
     <section id="faq" class="faq">
-        <h2>سوالات متداول</h2>
-        <div class="faq-item">
-            <h3>چگونه می‌توانم سفارش خود را ثبت کنم؟</h3>
-            <p>برای ثبت سفارش، کافیست محصول مورد نظر خود را انتخاب کرده و دکمه "افزودن به سبد خرید" را کلیک کنید. سپس به سبد خرید خود بروید و مراحل پرداخت را تکمیل کنید.</p>
-        </div>
-        <div class="faq-item">
-            <h3>هزینه ارسال چقدر است؟</h3>
-            <p>هزینه ارسال بسته به مقصد شما متفاوت است. در زمان ثبت سفارش، هزینه دقیق ارسال نمایش داده می‌شود.</p>
-        </div>
-        <div class="faq-item">
-            <h3>آیا امکان مرجوع کردن کالا وجود دارد؟</h3>
-            <p>بله، شما می‌توانید تا ۷ روز پس از دریافت کالا، در صورت وجود مشکل، آن را مرجوع کنید.</p>
+        <h2>پرسش‌های متداول</h2>
+        <div class="faq-container">
+            <div class="faq-item">
+                <h3>کیت‌ها اصل هستند؟</h3>
+                <p>بله، تمام کیت‌ها با کیفیت بالا و مشابه نمونه‌های اصلی ارائه می‌شن.</p>
+            </div>
+            <div class="faq-item">
+                <h3>ارسال به سراسر ایران دارید؟</h3>
+                <p>بله، ارسال به تمام نقاط ایران با پست پیشتاز انجام می‌شه.</p>
+            </div>
+            <div class="faq-item">
+                <h3>چطور سایز مناسب رو انتخاب کنم؟</h3>
+                <p>راهنمای سایز تو صفحه هر محصول هست. می‌تونید با پشتیبانی هم تماس بگیرید.</p>
+            </div>
+            <div class="faq-item">
+                <h3>امکان مرجوعی وجود داره؟</h3>
+                <p>بله، تا ۷ روز پس از تحویل می‌تونید کیت رو مرجوع کنید (در صورت عدم استفاده).</p>
+            </div>
+            <div class="faq-item">
+                <h3>پرداخت چطور انجام می‌شه؟</h3>
+                <p>پرداخت آنلاین امن از طریق درگاه بانکی یا کارت‌به‌کارت.</p>
+            </div>
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2>تماس با ما</h2>
-        <p>برای ارتباط با ما می‌توانید از طریق ایمیل یا تلگرام اقدام کنید:</p>
-        <p>ایمیل: naeemikorosh37@gmail.com</p>
-        <p>تلگرام: 09966897203</p>
+        <p>سؤال یا سفارشی داری؟ پیام بده!</p>
+        <form id="contact-form">
+            <input type="text" placeholder="نام" required>
+            <input type="email" placeholder="ایمیل" required>
+            <textarea placeholder="پیام شما (مثلاً: کیت پرسپولیس آستین‌دار سایز L)" required></textarea>
+            <button type="submit">ارسال</button>
+        </form>
     </section>
 
-    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-    </a>
-
+    <!-- Footer -->
     <footer>
         <p>طراحی‌شده توسط کوروش نعیمی</p>
         <p>تمامی حقوق محفوظ است © 1404</p>
         <p>ایمیل: naeemikorosh37@gmail.com | تلگرام: 09966897203</p>
     </footer>
+
+    <!-- Telegram Button -->
+    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
 
     <script src="script.js"></script>
     <script src="common.js"></script>
