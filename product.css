@@ -352,8 +352,10 @@ nav ul li a:hover {
 .size-options, .sleeve-options {
     margin: 1.5rem 0;
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 1rem;
+    justify-content: flex-end;
     padding: 0 1rem;
 }
 
@@ -362,6 +364,7 @@ nav ul li a:hover {
     margin-bottom: 0.8rem;
     font-family: 'Digikala', sans-serif;
     text-align: right;
+    width: 100%;
 }
 
 .size-options label, .sleeve-options label {
@@ -373,7 +376,6 @@ nav ul li a:hover {
     align-items: center;
     gap: 0.5rem;
     justify-content: flex-end;
-    max-width: 200px;
 }
 
 .size-options input, .sleeve-options input {
@@ -385,7 +387,7 @@ nav ul li a:hover {
     display: flex;
     align-items: center;
     gap: 1.2rem;
-    justify-content: flex-end;
+    justify-content: flex-end !important;
 }
 
 .price #original-price, .price .original-price {
@@ -525,6 +527,10 @@ footer {
     .theme-toggle i {
         font-size: 1rem;
     }
+
+    .size-options, .sleeve-options {
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 480px) {
@@ -552,5 +558,10 @@ footer {
 
     .theme-toggle i {
         font-size: 0.9rem;
+    }
+
+    .size-options, .sleeve-options {
+        flex-direction: column;
+        align-items: flex-end;
     }
 }
