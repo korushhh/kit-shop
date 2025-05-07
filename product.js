@@ -5,20 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Hamburger Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    hamburger.addEventListener('click', () => {
-        hamburger.classList.toggle('active');
-        mobileMenu.classList.toggle('active');
-    });
-
-    window.toggleMenu = function() {
-        hamburger.classList.remove('active');
-        mobileMenu.classList.remove('active');
-    };
-
     const cartModal = document.getElementById('cart-modal');
     const cartBtn = document.getElementById('cart-btn');
     const closeCart = document.getElementById('close-cart');
