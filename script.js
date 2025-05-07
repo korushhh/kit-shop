@@ -5,24 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Hamburger Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-    }
-
-    window.toggleMenu = function() {
-        if (hamburger && mobileMenu) {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        }
-    };
-
     // Contact Form Submission
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -180,8 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const favoriteBtn = document.querySelector(`.favorite-btn[data-kit="${kit}"]`);
         const isFavorited = favorites.some(item => item.kit === kit);
 
-        console.log(`Toggling favorite for kit: ${kit}, isFavorited: ${isFavorited}`); // Debug
-
         if (isFavorited) {
             favorites = favorites.filter(item => item.kit !== kit);
             favoriteBtn.classList.remove('active');
@@ -206,7 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.add('active');
         }
         button.addEventListener('click', () => {
-            console.log(`Favorite button clicked for kit: ${kit}`); // Debug
             toggleFavorite(kit);
         });
     });
