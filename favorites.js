@@ -5,24 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Hamburger Menu Toggle
-    const hamburger = document.getElementById('hamburger');
-    const mobileMenu = document.getElementById('mobile-menu');
-
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        });
-    }
-
-    window.toggleMenu = function() {
-        if (hamburger && mobileMenu) {
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        }
-    };
-
     // Favorites Functionality
     const favoritesList = document.getElementById('favorites-list');
     const noFavorites = document.getElementById('no-favorites');
