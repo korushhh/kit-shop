@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -10,9 +49,14 @@
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">KitBaz</div>
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <ul>
                 <li><a href="index.html">خانه</a></li>
@@ -25,43 +69,48 @@
                         <span class="cart-icon">🛒</span>
                         <span id="cart-count" class="cart-count">0</span>
                     </a>
-                </li>                
+                </li>
                 <li>
                     <button id="theme-toggle" class="theme-toggle">🌙</button>
                 </li>
             </ul>
+            <!-- Hamburger Menu -->
+            <div class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="index.html" onclick="toggleMenu()">خانه</a></li>
+                    <li><a href="index.html#shop" onclick="toggleMenu()">کیت‌ها</a></li>
+                    <li><a href="index.html#faq" onclick="toggleMenu()">سوالات متداول</a></li>
+                    <li><a href="index.html#contact" onclick="toggleMenu()">تماس</a></li>
+                    <li><a href="favorites.html" onclick="toggleMenu()">علاقه‌مندی‌ها</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="cart-modal">
-        <div class="cart-content">
-            <span id="close-cart" class="close">×</span>
-            <h2>سبد خرید</h2>
-            <div id="cart-items" class="cart-items"></div>
-            <p id="cart-total" class="cart-total">جمع: ۰ تومان</p>
-            <button id="clear-cart" class="clear-cart">خالی کردن سبد</button>
+    <div id="favorites-modal" class="favorites-modal">
+        <div class="favorites-content">
+            <span id="close-favorites" class="close">×</span>
+            <h2>علاقه‌مندی‌ها</h2>
+            <div id="favorites-items" class="favorites-items"></div>
+            <button id="clear-favorites" class="clear-favorites">خالی کردن علاقه‌مندی‌ها</button>
         </div>
     </div>
 
-    <!-- Favorites Section -->
-    <section id="favorites" class="favorites">
-        <h2>علاقه‌مندی‌ها</h2>
+    <section class="favorites-section">
+        <h2>علاقه‌مندی‌های شما</h2>
         <div id="favorites-list" class="favorites-list"></div>
-        <button id="clear-favorites" class="clear-favorites">خالی کردن علاقه‌مندی‌ها</button>
+        <p id="no-favorites" class="no-favorites">هنوز محصولی به علاقه‌مندی‌ها اضافه نشده!</p>
     </section>
 
-    <!-- Telegram Button -->
-    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-    </a>
-
-    <!-- Footer -->
     <footer>
         <p>طراحی‌شده توسط کوروش نعیمی</p>
         <p>تمامی حقوق محفوظ است © 1404</p>
         <p>ایمیل: naeemikorosh37@gmail.com | تلگرام: 09966897203</p>
     </footer>
+
+    <a href="https://t.me/korushNa7" class="telegram-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
+    </a>
 
     <script src="favorites.js"></script>
     <script src="common.js"></script>

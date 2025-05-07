@@ -5,110 +5,91 @@ document.addEventListener('DOMContentLoaded', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
 
-    // Cart Functionality
-    const cartModal = document.getElementById('cart-modal');
-    const cartBtn = document.getElementById('cart-btn');
-    const closeCart = document.getElementById('close-cart');
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    const clearCartBtn = document.getElementById('clear-cart');
+    // Hamburger Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    function updateCart() {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cartItems.innerHTML = '';
-        let total = 0;
-        cart.forEach(item => {
-            const itemElement = document.createElement('div');
-            itemElement.classList.add('cart-item');
-            itemElement.innerHTML = `
-                <p>${item.title} (${item.size}, ${item.sleeve === 'long' ? 'آستین‌دار' : 'بدون آستین'})</p>
-                <p>${item.price.toLocaleString()} تومان</p>
-            `;
-            cartItems.appendChild(itemElement);
-            total += item.price;
-        });
-        cartTotal.textContent = `جمع: ${total.toLocaleString()} تومان`;
-    }
-
-    if (cartBtn) {
-        cartBtn.addEventListener('click', () => {
-            cartModal.style.display = 'flex';
-            updateCart();
-        });
-    }
-
-    if (closeCart) {
-        closeCart.addEventListener('click', () => {
-            cartModal.style.display = 'none';
-        });
-    }
-
-    if (clearCartBtn) {
-        clearCartBtn.addEventListener('click', () => {
-            localStorage.setItem('cart', JSON.stringify([]));
-            updateCart();
-        });
-    }
-
-    window.addEventListener('click', (e) => {
-        if (e.target === cartModal) {
-            cartModal.style.display = 'none';
-        }
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
     });
+
+    window.toggleMenu = function() {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+    };
 
     // Favorites Functionality
     const favoritesList = document.getElementById('favorites-list');
+    const noFavorites = document.getElementById('no-favorites');
+    const favoritesModal = document.getElementById('favorites-modal');
+    const favoritesBtn = document.getElementById('favorites-btn');
+    const closeFavorites = document.getElementById('close-favorites');
+    const favoritesItems = document.getElementById('favorites-items');
     const clearFavoritesBtn = document.getElementById('clear-favorites');
+    const favoritesCount = document.getElementById('favorites-count');
 
     function updateFavorites() {
         let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
         favoritesList.innerHTML = '';
+        favoritesItems.innerHTML = '';
         if (favorites.length === 0) {
-            favoritesList.innerHTML = '<p>هیچ محصولی در علاقه‌مندی‌ها نیست!</p>';
+            noFavorites.style.display = 'block';
+            favoritesList.style.display = 'none';
         } else {
-            favorites.forEach(item => {
-                const favoriteElement = document.createElement('div');
-                favoriteElement.classList.add('favorite-item');
-                favoriteElement.innerHTML = `
-                    <img src="${item.image}" alt="${item.title}">
-                    <h3>${item.title}</h3>
-                    <p class="price">${item.discountedPrice.toLocaleString()} تومان</p>
-                    <button class="remove-btn" data-kit="${item.kit}">حذف</button>
+            noFavorites.style.display = 'none';
+            favoritesList.style.display = 'grid';
+            favorites.forEach(fav => {
+                const favItem = document.createElement('div');
+                favItem.classList.add('favorite-item');
+                favItem.innerHTML = `
+                    <img src="${fav.image}" alt="${fav.title}">
+                    <div class="favorite-info">
+                        <h3>${fav.title}</h3>
+                        <p>${fav.discountedPrice.toLocaleString()} تومان</p>
+                    </div>
                 `;
-                favoritesList.appendChild(favoriteElement);
+                favoritesList.appendChild(favItem);
+
+                const modalItem = document.createElement('div');
+                modalItem.classList.add('favorites-item');
+                modalItem.innerHTML = `
+                    <p>${fav.title}</p>
+                    <p>${fav.discountedPrice.toLocaleString()} تومان</p>
+                `;
+                favoritesItems.appendChild(modalItem);
             });
+        }
+        if (favoritesCount) {
+            favoritesCount.textContent = favorites.length;
         }
     }
 
-    favoritesList.addEventListener('click', (e) => {
-        if (e.target.classList.contains('remove-btn')) {
-            const kit = e.target.getAttribute('data-kit');
-            let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-            favorites = favorites.filter(item => item.kit !== kit);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
+    if (favoritesBtn) {
+        favoritesBtn.addEventListener('click', () => {
+            favoritesModal.style.display = 'flex';
             updateFavorites();
-            alert('محصول از علاقه‌مندی‌ها حذف شد!');
-        }
-    });
+        });
+    }
+
+    if (closeFavorites) {
+        closeFavorites.addEventListener('click', () => {
+            favoritesModal.style.display = 'none';
+        });
+    }
 
     if (clearFavoritesBtn) {
         clearFavoritesBtn.addEventListener('click', () => {
             localStorage.setItem('favorites', JSON.stringify([]));
             updateFavorites();
-            alert('علاقه‌مندی‌ها خالی شد!');
         });
     }
 
-    // Scroll Animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.2 });
+    window.addEventListener('click', (e) => {
+        if (e.target === favoritesModal) {
+            favoritesModal.style.display = 'none';
+        }
+    });
 
     updateFavorites();
-    const favoriteItems = document.querySelectorAll('.favorite-item');
-    favoriteItems.forEach(item => observer.observe(item));
 });
