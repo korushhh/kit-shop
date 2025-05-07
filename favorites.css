@@ -282,7 +282,7 @@ nav ul li a:hover {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.8);
-    z-index: YOU ARE HERE: 2000;
+    z-index: 2000;
     justify-content: center;
     align-items: center;
 }
@@ -380,6 +380,10 @@ nav ul li a:hover {
     color: var(--modal-text);
     cursor: pointer; /* Indicate clickable item */
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 350px; /* Ensure enough height for button placement */
 }
 
 .favorite-item:hover {
@@ -405,34 +409,29 @@ nav ul li a:hover {
     font-size: 1.1rem;
     color: var(--modal-text);
     font-family: 'Vazir', sans-serif;
+    margin-bottom: 1rem;
 }
 
 .remove-favorite-btn {
     background: var(--remove-btn-bg);
     color: #fff;
     border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 50px;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; /* Make it oval */
     cursor: pointer;
     font-weight: 600;
     text-transform: uppercase;
     box-shadow: 0 0 15px var(--remove-btn-hover-shadow);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     font-family: 'Digikala', sans-serif;
-    margin-top: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    justify-content: center;
+    align-self: center; /* Center the button */
+    width: 80%; /* Make it span most of the item width */
+    margin-top: auto; /* Push to bottom */
 }
 
 .remove-favorite-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     box-shadow: 0 0 20px var(--remove-btn-hover-shadow);
-}
-
-.remove-favorite-btn i {
-    font-size: 1rem;
 }
 
 .no-favorites {
@@ -513,6 +512,11 @@ footer {
     nav ul {
         display: none !important;
     }
+
+    .remove-favorite-btn {
+        padding: 0.4rem 1.2rem;
+        width: 90%;
+    }
 }
 
 @media (max-width: 480px) {
@@ -550,7 +554,8 @@ footer {
     }
 
     .remove-favorite-btn {
-        padding: 0.4rem 0.8rem;
+        padding: 0.3rem 1rem;
+        width: 90%;
         font-size: 0.9rem;
     }
 }

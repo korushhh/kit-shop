@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>${fav.discountedPrice.toLocaleString()} تومان</p>
                     </div>
                     <button class="remove-favorite-btn" data-kit="${fav.kit}">
-                        <i class="fas fa-trash"></i> حذف
+                        حذف
                     </button>
                 `;
                 favoritesList.appendChild(favItem);
@@ -63,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Add event listeners to remove buttons
             document.querySelectorAll('.remove-favorite-btn').forEach(button => {
-                button.addEventListener('click', () => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation(); // Prevent the click from triggering the navigation
                     const kit = button.dataset.kit;
                     let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
                     favorites = favorites.filter(item => item.kit !== kit);
