@@ -197,7 +197,7 @@ body.dark-mode .mobile-menu {
 }
 
 .mobile-menu.active {
-    display: block;
+    display: block !important;
 }
 
 .mobile-menu ul {
@@ -473,11 +473,11 @@ footer {
 
     /* Show hamburger and hide main nav */
     .hamburger {
-        display: flex;
+        display: flex !important;
     }
 
     nav ul {
-        display: none;
+        display: none !important;
     }
 }
 
