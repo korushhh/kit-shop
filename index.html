@@ -13,6 +13,12 @@
     <!-- Header -->
     <header>
         <div class="logo">KitBaz</div>
+        <!-- Hamburger Icon -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <nav>
             <ul>
                 <li><a href="#home">خانه</a></li>
@@ -30,6 +36,16 @@
                     <button id="theme-toggle" class="theme-toggle">🌙</button>
                 </li>
             </ul>
+            <!-- Hamburger Menu -->
+            <div class="mobile-menu" id="mobile-menu">
+                <ul>
+                    <li><a href="#home" onclick="toggleMenu()">خانه</a></li>
+                    <li><a href="#shop" onclick="toggleMenu()">کیت‌ها</a></li>
+                    <li><a href="#faq" onclick="toggleMenu()">سوالات متداول</a></li>
+                    <li><a href="#contact" onclick="toggleMenu()">تماس</a></li>
+                    <li><a href="favorites.html" onclick="toggleMenu()">علاقه‌مندی‌ها</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 
