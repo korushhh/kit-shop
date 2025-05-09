@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
+
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
@@ -179,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (cartCount) {
             cartCount.textContent = cart.length;
         }
-        alert('محصول به سبد خرید اضافه شد!');
     };
 
     window.toggleFavorite = function() {
@@ -191,7 +190,6 @@ document.addEventListener('DOMContentLoaded', () => {
             favorites = favorites.filter(item => item.kit !== kit);
             favoriteBtn.textContent = 'افزودن به علاقه‌مندی‌ها';
             favoriteBtn.classList.remove('favorited');
-            alert('محصول از علاقه‌مندی‌ها حذف شد!');
         } else {
             favorites.push({
                 kit,
@@ -201,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             favoriteBtn.textContent = 'حذف از علاقه‌مندی‌ها';
             favoriteBtn.classList.add('favorited');
-            alert('محصول به علاقه‌مندی‌ها اضافه شد!');
         }
 
         localStorage.setItem('favorites', JSON.stringify(favorites));
