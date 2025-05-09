@@ -165,7 +165,6 @@ header.scrolled {
     font-family: 'Digikala', sans-serif;
 }
 
-/* Hamburger Icon */
 .hamburger {
     display: none;
     flex-direction: column;
@@ -194,7 +193,6 @@ header.scrolled {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Mobile Menu */
 .mobile-menu {
     display: none;
     position: absolute;
@@ -557,6 +555,7 @@ nav ul li a:hover {
     display: flex;
     flex-direction: column;
     position: relative;
+    cursor: pointer:
 }
 
 .product.visible {
@@ -567,6 +566,7 @@ nav ul li a:hover {
 
 .product.out-of-stock {
     opacity: 0.6;
+    cursor: default;
 }
 
 .product:hover {
