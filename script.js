@@ -1,11 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Header Scroll Effect
+
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('scrolled', window.scrollY > 50);
     });
+    const productBoxes = document.querySelectorAll('.product');
+    productBoxes.forEach(product => {
+        product.addEventListener('click', (e) => {
 
-    // Contact Form Submission
+            if (e.target.closest('.favorite-btn') || e.target.closest('.sleeve-options')) {
+                return;
+            }
+
+            const productLink = product.querySelector('.product-btn');
+            if (productLink && !product.classList.contains('out-of-stock')) {
+                window.location.href = productLink.getAttribute('href');
+            }
+        });
+     });
+
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
@@ -15,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cart Functionality
+
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartModal = document.getElementById('cart-modal');
     const cartBtn = document.getElementById('cart-btn');
@@ -75,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Filter Functionality
+
     const filterButtons = document.querySelectorAll('.filter-btn');
     const products = document.querySelectorAll('.product');
 
@@ -103,8 +116,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-
-    // Favorite Functionality
     const favoriteButtons = document.querySelectorAll('.favorite-btn');
     const productsData = {
         'barca': {
@@ -203,11 +214,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const faqItems = document.querySelectorAll('.faq-item');
     faqItems.forEach(item => observer.observe(item));
 
-    // Initialize cart count
+
     updateCartCount();
 });
 
-// Expose addToCart globally
+
 window.addToCart = function(title, size, sleeve, price) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push({ title, size, sleeve, price });
@@ -216,5 +227,4 @@ window.addToCart = function(title, size, sleeve, price) {
     if (cartCount) {
         cartCount.textContent = cart.length;
     }
-    alert('محصول به سبد خرید اضافه شد!');
 };
