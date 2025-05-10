@@ -176,12 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isFavorited) {
             favorites = favorites.filter(item => item.kit !== kit);
             favoriteBtn.classList.remove('active');
-            alert('محصول از علاقه‌مندی‌ها حذف شد!');
         } else {
             if (productsData[kit]) {
                 favorites.push(productsData[kit]);
                 favoriteBtn.classList.add('active');
-                alert('محصول به علاقه‌مندی‌ها اضافه شد!');
             } else {
                 console.error(`Product data for kit ${kit} not found`);
             }
@@ -201,7 +199,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Scroll Animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
